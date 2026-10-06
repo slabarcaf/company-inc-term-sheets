@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company, Inc. Term Sheets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6fa; --surface:#ffffff; --surface-2:#eef2f8; --line:#dde3ec;
+  --ink:#14213d; --ink-2:#465571; --ink-3:#7a869c;
+  --navy:#16305e; --navy-2:#1f3f77; --teal:#0e8f88; --teal-soft:#d9f2ef;
+  --shadow:0 1px 0 rgba(20,33,61,.04);
+  /* series accents */
+  --sA:#0e8f88; --sB:#2f5aa8; --sC:#c8553a; --sD:#7b4fc0;
+  /* badges */
+  --b-new-bg:#e3ecff; --b-new:#244c9c;
+  --b-tight-bg:#fde6df; --b-tight:#a3391f;
+  --b-loose-bg:#ddf3e4; --b-loose:#1e7a43;
+  --b-same-bg:#eceff4; --b-same:#59657a;
+  --b-chg-bg:#fff1d6; --b-chg:#8a5a00;
+  --b-base-bg:#d9f2ef; --b-base:#0b6f69;
+  /* chart categorical (validated) */
+  --c1:#2f5aa8; --c2:#e2a422; --c3:#13a39b; --c4:#d8664a; --c5:#8b5fc7; --c6:#5f9e3a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1526; --surface:#15203a; --surface-2:#1b2846; --line:#2a3858;
+    --ink:#e8edf6; --ink-2:#b3bed3; --ink-3:#8290aa;
+    --navy:#0a1222; --navy-2:#20345e; --teal:#2cc0b6; --teal-soft:#123c3c;
+    --sA:#2cc0b6; --sB:#6f97e0; --sC:#ec7d60; --sD:#a585e0;
+    --b-new-bg:#1d2f57; --b-new:#a9c2ff;
+    --b-tight-bg:#4a2219; --b-tight:#ffb3a0;
+    --b-loose-bg:#163b26; --b-loose:#8fe0ad;
+    --b-same-bg:#263451; --b-same:#b3bed3;
+    --b-chg-bg:#3d2f10; --b-chg:#f5cf7a;
+    --b-base-bg:#123c3c; --b-base:#8fe5dd;
+    --c1:#4a78cc; --c2:#b07a10; --c3:#14a399; --c4:#d8664a; --c5:#9670d4; --c6:#5f9e3a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1526; --surface:#15203a; --surface-2:#1b2846; --line:#2a3858;
+  --ink:#e8edf6; --ink-2:#b3bed3; --ink-3:#8290aa;
+  --navy:#0a1222; --navy-2:#20345e; --teal:#2cc0b6; --teal-soft:#123c3c;
+  --sA:#2cc0b6; --sB:#6f97e0; --sC:#ec7d60; --sD:#a585e0;
+  --b-new-bg:#1d2f57; --b-new:#a9c2ff; --b-tight-bg:#4a2219; --b-tight:#ffb3a0;
+  --b-loose-bg:#163b26; --b-loose:#8fe0ad; --b-same-bg:#263451; --b-same:#b3bed3;
+  --b-chg-bg:#3d2f10; --b-chg:#f5cf7a; --b-base-bg:#123c3c; --b-base:#8fe5dd;
+  --c1:#4a78cc; --c2:#b07a10; --c3:#14a399; --c4:#d8664a; --c5:#9670d4; --c6:#5f9e3a; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+
+/* header */
+header.top{background:var(--navy);color:#fff;padding:28px 0 0}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:44px;height:44px;border-radius:12px;background:var(--teal);display:grid;place-items:center;font-weight:900;font-size:20px;color:#fff;box-shadow:0 4px 0 #0a5f5a}
+.brand h1{margin:0;font-size:24px;font-weight:900;letter-spacing:-.01em}
+.brand p{margin:2px 0 0;color:#b9c6e0;font-size:14px;font-weight:600}
+.legend-strip{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;font-size:12.5px;color:#cfd8ea;font-weight:700}
+.legend-strip .badge{font-size:11.5px}
+
+/* tabs */
+nav.tabs{display:flex;gap:8px;overflow-x:auto;padding:18px 0 0;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:15px;color:#d6def0;background:transparent;padding:12px 18px 14px;border-radius:14px 14px 0 0;display:flex;align-items:center;gap:8px}
+.tab .dot{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:13px;font-weight:900;color:#fff;background:rgba(255,255,255,.14)}
+.tab:hover{color:#fff;background:rgba(255,255,255,.06)}
+.tab[aria-selected="true"]{background:var(--bg);color:var(--ink)}
+.tab[aria-selected="true"] .dot{background:var(--acc,var(--teal));box-shadow:0 3px 0 rgba(0,0,0,.18)}
+
+main{padding:28px 0 64px}
+.panel{display:none}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* hero */
+.hero{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:22px;display:grid;grid-template-columns:1.3fr 1fr;gap:22px;box-shadow:var(--shadow);border-bottom-width:5px}
+.hero h2{margin:0 0 6px;font-size:28px;font-weight:900;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink-2)}
+.pill.acc{background:var(--acc);color:#fff}
+.hero .lede{color:var(--ink-2);margin:6px 0 0;font-size:15.5px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat{background:var(--surface-2);border-radius:14px;padding:12px 14px}
+.stat .l{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3)}
+.stat .v{font-size:20px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--ink)}
+.stat .s{font-size:12.5px;color:var(--ink-2);font-weight:600}
+
+.bigidea{margin:18px 0 0;border-radius:18px;padding:16px 18px;background:var(--teal-soft);border:2px solid color-mix(in srgb,var(--teal) 35%,transparent);display:flex;gap:14px;align-items:flex-start}
+.bigidea .ic{flex:0 0 36px;height:36px;border-radius:10px;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:900}
+.bigidea h4{margin:0 0 4px;font-size:15px;font-weight:900}
+.bigidea p{margin:0;color:var(--ink-2);font-size:15px}
+
+/* toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:26px 0 6px}
+.chip{border:2px solid var(--line);background:var(--surface);color:var(--ink-2);font:inherit;font-size:14px;font-weight:800;padding:7px 14px;border-radius:999px;cursor:pointer;border-bottom-width:4px;transition:transform .05s}
+.chip:hover{border-color:var(--ink-3)}
+.chip:active{transform:translateY(2px);border-bottom-width:2px}
+.chip[aria-pressed="true"]{background:var(--navy-2);border-color:var(--navy);color:#fff}
+.toolbar .sp{flex:1}
+.btn-ghost{border:0;background:none;font:inherit;font-weight:800;color:var(--teal);cursor:pointer;font-size:14px;padding:6px 8px;border-radius:8px}
+.btn-ghost:hover{background:var(--surface-2)}
+
+/* sections & cards */
+.sec{margin-top:26px}
+.sec-h{display:flex;align-items:center;gap:12px;margin:0 0 12px}
+.sec-h .n{width:34px;height:34px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:900;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.sec-h h3{margin:0;font-size:19px;font-weight:900}
+.sec-h small{color:var(--ink-3);font-weight:700;font-size:13px}
+.cards{display:grid;gap:10px}
+.card{background:var(--surface);border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;overflow:hidden}
+.card[open]{border-color:color-mix(in srgb,var(--acc) 55%,var(--line))}
+.card summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:start}
+.card summary::-webkit-details-marker{display:none}
+.card summary:hover{background:var(--surface-2)}
+.ct{font-weight:900;font-size:16.5px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.ck{grid-column:1/2;color:var(--ink-2);font-size:15px;font-weight:600}
+.chev{grid-row:1/3;grid-column:2;width:30px;height:30px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;color:var(--ink-2);transition:transform .2s;font-weight:900}
+.card[open] .chev{transform:rotate(180deg);background:var(--acc);color:#fff}
+.cb{padding:2px 16px 16px;display:grid;gap:12px}
+.blk h5{margin:0 0 4px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.blk ul{margin:0;padding-left:20px}
+.blk li{margin:3px 0}
+.blk p{margin:0}
+.blk.x{background:var(--b-chg-bg);border-radius:12px;padding:10px 12px}
+.blk.x h5{color:var(--b-chg)}
+.blk.w{background:var(--surface-2);border-radius:12px;padding:10px 12px;border-left:4px solid var(--acc)}
+.blk.d{border:2px dashed var(--line);border-radius:12px;padding:10px 12px}
+.blk.d h5{color:var(--ink-2)}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:900;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.b-new{background:var(--b-new-bg);color:var(--b-new)}
+.b-tight{background:var(--b-tight-bg);color:var(--b-tight)}
+.b-loose{background:var(--b-loose-bg);color:var(--b-loose)}
+.b-same{background:var(--b-same-bg);color:var(--b-same)}
+.b-chg{background:var(--b-chg-bg);color:var(--b-chg)}
+.b-base{background:var(--b-base-bg);color:var(--b-base)}
+.fav{font-size:11.5px;font-weight:800;color:var(--ink-3);white-space:nowrap}
+.fav b{color:var(--ink-2)}
+.interp{display:inline-block;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--b-new);background:var(--b-new-bg);border-radius:6px;padding:1px 6px;margin-right:4px;vertical-align:1px}
+
+/* glossary */
+.g{border-bottom:2px dotted var(--teal);cursor:help;font-weight:inherit}
+.g:focus{outline:2px solid var(--teal);outline-offset:2px;border-radius:3px}
+#tip{position:fixed;z-index:50;max-width:300px;background:var(--navy);color:#eef3fb;padding:10px 12px;border-radius:12px;font-size:13.5px;line-height:1.45;box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none;opacity:0;transition:opacity .12s}
+#tip b{color:#7fe3da;display:block;margin-bottom:2px;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+#tip.on{opacity:1}
+
+/* summary */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rcard{background:var(--surface);border:2px solid var(--line);border-bottom-width:5px;border-radius:18px;padding:14px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.rcard:hover{border-color:var(--rc)}
+.rcard .top{display:flex;justify-content:space-between;align-items:center}
+.rcard .tag{width:34px;height:34px;border-radius:10px;background:var(--rc);color:#fff;display:grid;place-items:center;font-weight:900;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.rcard .yr{font-size:13px;font-weight:800;color:var(--ink-3)}
+.rcard .amt{font-size:22px;font-weight:900;margin-top:8px;font-variant-numeric:tabular-nums}
+.rcard .px{font-size:14px;color:var(--ink-2);font-weight:700}
+.rcard .mood{margin-top:8px}
+.box{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:18px;border-bottom-width:4px}
+.box h3{margin:0 0 4px;font-size:18px;font-weight:900}
+.box .sub{margin:0 0 12px;color:var(--ink-3);font-size:13.5px;font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{font-family:Nunito,system-ui,sans-serif}
+.lg{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 0;font-size:13px;font-weight:700;color:var(--ink-2)}
+.lg span{display:inline-flex;align-items:center;gap:6px}
+.lg i{width:12px;height:12px;border-radius:3px;display:inline-block}
+#ctip{position:fixed;z-index:40;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:8px 10px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.15);pointer-events:none;opacity:0;font-weight:700}
+#ctip.on{opacity:1}
+#ctip .k{color:var(--ink-3);font-weight:800;font-size:12px}
+
+.tbl-wrap{overflow-x:auto;border-radius:16px;border:2px solid var(--line);background:var(--surface)}
+table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:820px;font-size:14px}
+table.cmp th,table.cmp td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+table.cmp thead th{position:sticky;top:0;background:var(--surface-2);font-weight:900;font-size:13px}
+table.cmp thead th .sq{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;color:#fff;font-size:12px;margin-right:6px}
+table.cmp tbody th{font-weight:900;width:150px;background:var(--surface);position:sticky;left:0;z-index:1}
+table.cmp td .badge{margin-bottom:4px}
+table.cmp tr.grp td{background:var(--surface-2);font-weight:900;text-transform:uppercase;letter-spacing:.07em;font-size:12px;color:var(--ink-3);position:sticky;left:0}
+table.cmp td.hl{background:color-mix(in srgb,var(--b-chg-bg) 55%,transparent)}
+table.num{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+table.num th,table.num td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right}
+table.num th:first-child,table.num td:first-child{text-align:left}
+table.num thead th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3)}
+.diff{display:grid;gap:12px}
+.diffc{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:16px;border-bottom-width:4px}
+.diffc h4{margin:0 0 8px;font-size:16px;font-weight:900;display:flex;align-items:center;gap:8px}
+.diffc ul{margin:0;padding-left:20px}
+.diffc li{margin:4px 0}
+.why{margin-top:10px;background:var(--surface-2);border-radius:12px;padding:10px 12px;font-size:15px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.fstep{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px;border-top:6px solid var(--rc)}
+.fstep h4{margin:0 0 6px;font-size:15px;font-weight:900}
+.fstep p{margin:0;font-size:14px;color:var(--ink-2)}
+.kv{display:flex;justify-content:space-between;font-size:13.5px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.kv:last-child{border:0}
+.kv b{font-weight:900}
+.note{font-size:13px;color:var(--ink-3);font-weight:600;margin-top:8px}
+footer{color:var(--ink-3);font-size:13px;padding:20px 0 40px;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .grid4,.flow{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .grid4,.flow{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .brand h1{font-size:20px}
+  .hero h2{font-size:23px}
+  .tab{padding:10px 12px 12px;font-size:14px}
+}
+
+/* lessons */
+.lesson{background:var(--surface);border:2px solid var(--line);border-bottom-width:5px;border-radius:20px;padding:20px;margin-top:20px;scroll-margin-top:12px}
+.lesson-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.lesson-h .n{width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:var(--navy-2);color:#fff;display:grid;place-items:center;font-weight:900;box-shadow:0 3px 0 var(--navy)}
+.lesson-h h3{margin:0;font-size:21px;font-weight:900}
+.one{background:var(--teal-soft);border-radius:14px;padding:12px 14px;font-size:15.5px;margin-bottom:14px}
+.one b{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:2px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:12px 0}
+.tile{background:var(--surface-2);border-radius:14px;padding:12px 14px}
+.tile h4{margin:0 0 4px;font-size:15px;font-weight:900}
+.tile p{margin:0;font-size:14.5px;color:var(--ink-2)}
+h4.mini{margin:18px 0 8px;font-size:16px;font-weight:900}
+.mini-p{margin:6px 0 10px;font-size:15px;color:var(--ink-2)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:14px}
+.rule{border:2px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px}
+.rule span{display:block;font-size:11.5px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3)}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.seg button{font:inherit;font-weight:900;font-size:14px;border:2px solid var(--line);border-bottom-width:4px;background:var(--surface);color:var(--ink-2);padding:8px 16px;border-radius:12px;cursor:pointer}
+.seg button[aria-selected="true"]{background:var(--rc);border-color:var(--rc);color:#fff;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.fgrid{display:grid;gap:6px;margin-bottom:12px}
+.frow{display:grid;grid-template-columns:120px 1fr auto;gap:10px;align-items:center;background:var(--surface-2);border-radius:10px;padding:8px 12px;font-size:14.5px}
+.fl{font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3)}
+.fm{color:var(--ink-2)}
+.fr{font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar100{display:flex;height:26px;border-radius:8px;overflow:hidden;gap:2px;background:var(--surface)}
+.bar100 span{display:block;min-width:2px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:0}
+table.num tr.tot td{font-weight:900;border-top:2px solid var(--ink-3)}
+.formula{font-size:17px;font-weight:900;background:var(--navy-2);color:#fff;border-radius:12px;padding:12px 16px;display:inline-block}
+.formula span{color:#7fe3da}
+.legend-list{margin:10px 0;padding-left:20px;font-size:15px}
+.legend-list li{margin:3px 0}
+ol.steps{counter-reset:st;list-style:none;padding:0;margin:8px 0 12px;display:grid;gap:8px}
+ol.steps li{counter-increment:st;position:relative;padding:10px 12px 10px 50px;background:var(--surface-2);border-radius:12px;font-size:15px}
+ol.steps li::before{content:counter(st);position:absolute;left:12px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;font-weight:900;display:grid;place-items:center;font-size:13px}
+.calc{margin:16px 0}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.sliders{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:10px}
+.sliders label{font-weight:800;font-size:14px;color:var(--ink-2);display:grid;gap:4px}
+.sliders output{font-weight:900;color:var(--ink);font-size:18px}
+.sliders input{width:100%;accent-color:var(--teal)}
+.mbar{display:inline-block;width:70px;height:8px;background:var(--surface-2);border-radius:4px;margin-right:8px;vertical-align:1px;overflow:hidden}
+.mbar i{display:block;height:100%;background:var(--teal);border-radius:4px}
+.callout{background:var(--b-chg-bg);border-radius:14px;padding:12px 14px;margin:12px 0;font-size:15px}
+.callout.ok{background:var(--b-loose-bg)}
+.callout ul{margin:6px 0;padding-left:20px}
+.flowv{display:grid;gap:6px;justify-items:center;margin:8px 0 14px;text-align:center}
+.fbox{background:var(--surface-2);border:2px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:800;font-size:14.5px;max-width:420px}
+.fbox.q{background:var(--navy-2);color:#fff;border-color:var(--navy)}
+.fbox.ok{background:var(--b-loose-bg);border-color:transparent}
+.fbox.warn{background:var(--b-tight-bg);border-color:transparent}
+.farr{color:var(--ink-3);font-weight:900;font-size:14px}
+.fsplit{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+.fsplit>div{display:grid;gap:6px;justify-items:center}
+.learn{border:2px solid var(--acc);background:transparent;color:var(--ink);font:inherit;font-weight:900;font-size:13.5px;border-radius:999px;padding:6px 14px;cursor:pointer;justify-self:start;border-bottom-width:4px}
+.learn:hover{background:var(--acc);color:#fff}
+@media (max-width:620px){.sliders,.fsplit{grid-template-columns:1fr}.frow{grid-template-columns:1fr;gap:2px}}
+
+/* payouts */
+.vpick{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:start;margin-bottom:10px}
+.vlab{font-weight:900;font-size:14px;display:flex;align-items:center;gap:6px;padding-top:8px}
+.vlab i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.vchips{display:flex;flex-wrap:wrap;gap:6px}
+.vchips .chip{font-size:13px;padding:6px 11px}
+#va .chip[aria-pressed="true"]{background:var(--c1);border-color:var(--c1)}
+#vb .chip[aria-pressed="true"]{background:var(--c4);border-color:var(--c4)}
+.knobs{border-top:2px solid var(--line);margin-top:6px;padding-top:8px}
+.knobs summary{cursor:pointer;font-weight:900;font-size:14px;padding:4px 0}
+.sliders.s5{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:8px}
+.paywrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:14px;align-items:start;margin-top:12px}
+.paywrap .chart{min-width:0}
+.paywrap svg{width:100%;height:auto;display:block;touch-action:none}
+.readout{background:var(--surface-2);border-radius:14px;padding:12px;display:grid;gap:8px;font-size:13.5px}
+.ro-x{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--line);padding-bottom:6px}
+.ro-x span,.ro-row span,.ro-com span{color:var(--ink-3);font-weight:800;font-size:12px}
+.ro-x b{font-size:20px;font-variant-numeric:tabular-nums}
+.ro-row{display:grid;grid-template-columns:12px 1fr;gap:8px;align-items:start}
+.ro-row i{width:12px;height:12px;border-radius:3px;margin-top:3px}
+.ro-row b{display:block;font-size:17px;font-variant-numeric:tabular-nums}
+.ro-row small{color:var(--ink-3);font-weight:700}
+.ro-diff{background:var(--surface);border-radius:10px;padding:8px 10px}
+.ro-com b{display:block}
+.vcard p{margin:6px 0}
+.bends{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px;font-size:14px}
+.bends li{display:grid;grid-template-columns:30px 1fr;gap:8px}
+.bn{color:#fff;font-weight:900;font-size:11px;border-radius:6px;display:grid;place-items:center;height:22px}
+@media (max-width:760px){.paywrap{grid-template-columns:1fr}.vpick{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">TS</div>
+      <div>
+        <h1>Company, Inc. Term Sheets</h1>
+        <p>Series A → D (2003–2007): what each term says, the exceptions, and why it matters</p>
+      </div>
+    </div>
+    <div class="legend-strip" aria-label="Badge legend">
+      <span class="badge b-base">Baseline</span>
+      <span class="badge b-new">New</span>
+      <span class="badge b-tight">Tighter · pro-investor</span>
+      <span class="badge b-loose">Looser · pro-company</span>
+      <span class="badge b-chg">Changed</span>
+      <span class="badge b-same">Same</span>
+      <span style="align-self:center">· Dotted words show a definition on hover or tap</span>
+    </div>
+    <nav class="tabs" role="tablist" id="tabs"></nav>
+  </div>
+</header>
+
+<main class="wrap" id="main"></main>
+<div id="tip" role="tooltip"></div>
+<div id="ctip"></div>
+
+<footer class="wrap">
+  A study aid built from the four Company, Inc. term sheets and the case discussion questions from a venture capital course. Badges compare each round with the one before it. Items marked <span class="interp">Interpretation</span> are the author's reading of the documents, not text from them.
+</footer>
+
+<script>
+/* ---------------- Glossary ---------------- */
+const GL = {
+  pre:["Pre-money valuation","What the company is worth just before the new money comes in: price per share × shares outstanding before the round."],
+  post:["Post-money valuation","Pre-money plus the new cash. Investor ownership = investment ÷ post-money."],
+  fd:["Fully diluted","Share count that includes all options (granted and reserved), warrants and preferred, as if everything converted to common."],
+  pref:["Preferred stock","The class VCs buy. It carries economic rights (liquidation preference, dividends, anti-dilution) and control rights (vetoes, board seats) that common stock does not."],
+  lp:["Liquidation preference","On a sale or wind-down, preferred holders get their money back (here 1×) before common holders receive anything."],
+  part:["Participation","After taking its preference, participating preferred also shares in what is left alongside common. 'Capped' means it stops at a multiple (here 2× in total)."],
+  pp:["Pari passu","On equal footing. Series paid pari passu share the proceeds pro rata, with none ahead of another."],
+  senior:["Senior","Paid first. In Series D, the D holders are paid in full before A, B and C receive anything."],
+  dl:["Deemed liquidation","A sale or merger treated as a 'liquidation', so the liquidation preference applies to an M&A exit."],
+  wa:["Broad-based weighted average","Anti-dilution formula: if new shares are sold at a lower price, the conversion price drops in proportion to how many cheap shares are issued, measured against all shares outstanding (the 'broad base'). Milder than a full ratchet."],
+  ratchet:["Full ratchet","The harshest anti-dilution: the conversion price resets all the way down to the new lower price. None of these term sheets uses it."],
+  carve:["Carve-outs","Issuances that do NOT trigger anti-dilution or pre-emptive rights, such as employee option grants, conversions, bank warrants and board-approved acquisitions."],
+  cp:["Conversion price","The price used to turn preferred into common. It starts equal to the purchase price (1:1); anti-dilution lowers it so each preferred share converts into more common."],
+  pp2:["Protective provisions","Investor veto rights. The company cannot take the listed actions without approval from a set percentage of the preferred, whatever the board decides."],
+  rofo:["Right of first offer (pre-emptive right)","An investor's right to buy its pro rata share of any NEW securities the company issues, so it can avoid dilution."],
+  rofr:["Right of first refusal","A right to BUY first. Only when a founder chooses to sell to an outsider, the company (and then the investors) can buy those shares at the same price. If the founder declines an offer, nothing is triggered."],
+  cosale:["Co-sale (tag-along)","A right to SELL alongside. If a founder sells to an outside buyer, investors can sell a proportional part of their own shares to that buyer, so the founder sells fewer. No founder sale means no co-sale."],
+  drag:["Drag-along","If the required majority (and the board) approve a sale, every other holder must vote for it and sell. This stops minority holdouts."],
+  vest:["Vesting","Shares or options are earned over time. Unvested shares can be bought back at cost if the person leaves."],
+  cliff:["Cliff","Nothing vests until a set date (usually 1 year), when a large chunk (usually 25%) vests at once."],
+  accel:["Acceleration","Extra vesting triggered by an event, such as termination without cause."],
+  demand:["Demand registration","Investors can force the company to register their shares with the SEC so they can sell them publicly."],
+  piggy:["Piggyback rights","Investors can add their shares to a registration the company is already doing. Underwriters may 'cut back' how many get included."],
+  s3:["Form S-3","A short-form SEC registration available to companies that are already public, which makes later resales cheaper and faster."],
+  r144:["Rule 144","The SEC rule that lets holders of restricted stock sell publicly after holding periods and within volume limits, without a registration."],
+  lock:["Lock-up","A promise not to sell shares for a period (here up to 180 days) after the IPO, usually requested by the underwriters."],
+  noshop:["No-shop","A binding promise by the company not to seek or negotiate other financing or a sale for a set period while the lead investor finishes diligence."],
+  down:["Down round","A financing at a lower price per share than the previous round."],
+  flat:["Flat round","A financing at the same price per share as the previous round, meaning no step-up in value."],
+  shuffle:["Option pool shuffle","Creating or expanding the pool in the PRE-money. Existing holders absorb all of that dilution and the new investor absorbs none, which lowers the effective pre-money."],
+  noncum:["Non-cumulative dividend","Paid only if the board declares it. Unpaid dividends do NOT pile up. In practice they are almost never paid in startups."],
+  qsbs:["QSBS (Section 1202)","Qualified small business stock: a tax break that can exclude gains from federal tax if the stock is held 5+ years."],
+  sbic:["SBA / SBIC","Small Business Investment Companies are VC funds licensed and partly funded by the U.S. Small Business Administration, which imposes extra paperwork requirements."],
+  qipo:["Qualified IPO","An IPO that meets set price and size thresholds and forces the preferred to convert to common automatically."],
+  pik:["Paid in kind (PIK)","A dividend paid in additional shares instead of cash."],
+  obs:["Board observer","Attends board meetings and receives board materials but has no vote."],
+  keyman:["Key-man insurance","Life insurance on critical executives, paid to the company if one of them dies."],
+  mac:["Material adverse change (MAC)","A significant negative change in the business that lets the investor walk away before closing."],
+  accred:["Accredited investor","An SEC category of wealthy or institutional investors allowed to buy private securities."],
+  pii:["PIIA","Proprietary Information and Inventions Assignment agreement: employees agree the company owns the IP they create."],
+  mgmt:["Management rights letter","Lets a VC fund consult with and advise management, which it needs to keep certain ERISA/regulatory status."],
+  afr:["Applicable Federal Rate","The minimum interest rate set by the IRS. Here it caps what bridge lenders can charge."],
+  bhca:["Bank Holding Company Act","A U.S. law limiting what banks and their affiliates can own. It suggests Investor 4 is bank-affiliated."],
+};
+const G=(k,label)=>`<span class="g" tabindex="0" data-g="${k}">${label||GL[k][0]}</span>`;
+const I=`<span class="interp">Interpretation</span>`;
+
+/* ---------------- Badges ---------------- */
+const BADGE={base:["b-base","Baseline"],new:["b-new","New"],tight:["b-tight","Tighter"],loose:["b-loose","Looser"],chg:["b-chg","Changed"],same:["b-same","Same"]};
+const badge=(k,txt)=>`<span class="badge ${BADGE[k][0]}">${txt||BADGE[k][1]}</span>`;
+
+/* ---------------- Series content ---------------- */
+const THEMES=[
+  ["econ","Economics","Price, pool, preferred, liquidation, dividends, conversion, anti-dilution"],
+  ["ctrl","Control & ownership","Vetoes, transfer rights, vesting, voting, board, lock-up"],
+  ["deal","Liquidity & deal mechanics","Registration rights, information, closing conditions, no-shop"],
+];
+
+const S = {
+A:{
+  name:"Series A", date:"Sept 2003", acc:"var(--sA)", mood:["base","Insider seed"],
+  lede:`Investor 1 is the only investor. It buys half the company for $1.5M in a short, friendly deal drafted from company counsel's template. Founders and investor each end up with 48%.`,
+  stats:[["Raised","$1.5M","1.5M shares, Investor 1 only"],["Price / share","$1.00","Conversion 1:1"],["Pre / post-money","$1.6M / $3.1M","Founders 1.5M + pool 125k"],["Post-closing split","48 / 48 / 4","Founders / Investor 1 / pool"]],
+  big:`Two terms carry this round: <b>1× participating preferred capped at 2×</b>, and <b>broad-based weighted-average anti-dilution with an unusual 'ratchet back up'</b>. Control is balanced (a 2–2 board), but Investor 1 holds every preferred veto because it owns all of the preferred.`,
+  cards:{
+  econ:[
+   {t:"Price & size of financing",b:"base",f:"Balanced",k:`$1.5M at $1.00/share. ${G('pre')} ≈ $1.625M, ${G('post')} $3.125M.`,
+    s:[`1,500,000 Series A shares at $1.00 to Investor 1.`,`Pre-money = (1.5M founder shares + 125k pool) × $1.00 = $1.625M. Post-money = $3.125M.`,`Part of the price is paid by converting an $8,000 promissory note.`],
+    x:[`Until Dec 31, 2004, Investor 1 may buy <b>500,000 more shares</b> on the same terms, if both sides agree.`],
+    w:`A low price and a small round. The extra-shares right is a cheap call option for the investor. ${I}The Series B cap table shows Investor 1 holding ~4.52M Series A shares, so the A round was extended well beyond the original $1.5M.`},
+   {t:"Option pool",b:"base",f:"Founders",k:`Only 125,000 shares (4%) reserved for future hires.`,
+    s:[`125,000 common shares reserved and remaining for directors, employees and consultants after closing.`],
+    w:`The pool is tiny because the founders are the team. A small pool means less dilution today, but the company will have to grow it before hiring management, and changing the pool size needs preferred approval (see Protective Provisions).`},
+   {t:`${G('pref','Preferred stock')}`,b:"base",f:"Investor",k:`Series A Preferred, convertible 1:1 into common.`,
+    s:[`A new class with a liquidation preference, dividend priority, anti-dilution and vetoes. Common has none of these.`,`Purchase agreement includes a rep that the stock qualifies as ${G('qsbs')}.`],
+    w:`Preferred lets the investor pay a "common-equivalent" price while protecting the downside. Employees and founders hold common, which ranks behind it.`},
+   {t:`${G('lp')} & ${G('part')}`,b:"base",f:"Investor",k:`1× back first, then shares with common until it has received 2× in total. After that, all remaining value goes to common.`,
+    s:[`Step 1: Series A gets $1.00/share plus declared but unpaid dividends (the "Initial Payment").`,`Step 2: A participates ratably with common until it has received <b>2× its price in total</b>.`,`Step 3: Everything left goes to common.`,`A sale of substantially all assets, or a merger, counts as a ${G('dl')}.`],
+    x:[`NOT a liquidation: (i) a merger with a wholly owned subsidiary, (ii) a reincorporation merger, (iii) an equity financing where the company survives.`],
+    w:`Capped participation gives the investor downside protection plus some upside. Above the cap, converting to common pays more. In small exits, common (founders and employees) gets much less than its percentage ownership.`},
+   {t:"Dividends",b:"base",f:"Neutral",k:`8% a year, ${G('noncum','non-cumulative')}, only if declared. Paid before common.`,
+    s:[`8% of the purchase price per year, from legally available funds, only when the board declares it.`],
+    w:`A formality: nothing accrues, so it costs common holders nothing unless the board chooses to pay.`},
+   {t:"Redemption",b:"base",f:"Company",k:`None. Investors cannot force the company to buy back their shares.`,
+    s:[`"The Series A Preferred Stock will not be redeemable."`],
+    w:`Company-friendly: there is no future cash obligation that could pressure the company toward a sale.`},
+   {t:"Conversion",b:"base",f:"Balanced",k:`Converts 1:1 at any time. Automatic on an IPO with ≥$20M net proceeds or a majority-of-preferred vote.`,
+    s:[`Voluntary: any holder, any time, initially 1:1.`,`Automatic: (i) vote of a majority of preferred, or (ii) underwritten IPO with ≥ $20M net proceeds.`],
+    w:`The IPO threshold keeps the investor from being forced into common in a small IPO. The majority vote is effectively Investor 1's decision.`},
+   {t:"Anti-dilution protection",b:"base",f:"Investor (with a founder twist)",k:`${G('wa')}, plus an unusual adjustment that moves the conversion price back UP if later rounds are priced higher.`,
+    s:[`Proportional adjustment for splits, stock dividends and the like.`,`Broad-based weighted average for issuances below the current ${G('cp')}.`,`<b>Unusual:</b> if the conversion price has already been lowered, later issuances at HIGHER prices adjust it back up, but never above the original $1.00.`],
+    x:[`Nine ${G('carve')}: splits/dividends; option-plan grants; board-approved bank, equipment or lease financings; existing warrants/notes; board-approved acquisitions; conversions of preferred; public offerings; board-approved strategic partnerships; and anything the majority of preferred exempts.`],
+    w:`Weighted average is the market-standard, moderate form (not a ${G('ratchet')}). The "ratchet back up" is founder-friendly: if the company recovers, the investor gives back some of the extra shares it gained from a down round.`},
+  ],
+  ctrl:[
+   {t:`${G('pp2')}`,b:"base",f:"Investor",k:`Preferred holders can veto 9 kinds of decisions. Investor 1 owns all the preferred, so it alone holds that veto.`,
+    s:[`A sale of the company or a change of control (<50% retained voting power).`,`<b>Any</b> charter or bylaw amendment.`,`Adverse changes to the preferred; changing the number of authorized preferred shares.`,`Issuing securities senior to or on par with Series A.`,`Changing the number of directors; dividends on common; share repurchases.`,`Increasing or decreasing the option pool.`],
+    x:[`Repurchases of common at cost from departing employees under standard agreements are allowed.`],
+    w:`Even with a 2–2 board, Investor 1 decides the big things: sales, new rounds and pool size. Employees feel it through the pool veto.`},
+   {t:`${G('rofo')}`,b:"base",f:"Investor",k:`Holders of ≥1M Series A shares can buy their pro rata share of new issuances within 15 days.`,
+    s:[`Pro rata = holder's as-converted shares ÷ fully diluted shares.`,`Same terms as the third-party buyers. Ends at an IPO or acquisition.`],
+    x:[`Same carve-outs as anti-dilution, plus issuances the board unanimously agrees not to offer to existing holders.`,`Does not apply to a holder who is not an ${G('accred')} when an offering is limited to accredited investors.`],
+    w:`Lets Investor 1 defend its 48% and keep buying into a winner. This becomes important later, when Investor 1 invests in every round.`},
+   {t:`${G('cosale')} & ${G('rofr')}`,b:"base",f:"Investor",k:`Founders and officers can't quietly sell. The company and then the preferred can buy first or tag along.`,
+    s:[`Co-sale: preferred may sell pro rata alongside any founder or officer sale.`,`ROFR: the company's right of first refusal on founder sales passes to the preferred if the company doesn't use it.`,`Both end just before an IPO or acquisition.`],
+    x:[`Estate-planning transfers, and up to 1% of each founder's common.`],
+    w:`Keeps founders committed and keeps the cap table clean. Founders lose liquidity on their own shares.`},
+   {t:`Vesting`,b:"base",f:"Balanced",k:`Founders vest monthly over 4 years with credit back to early 2003 and some ${G('accel')}. Employees vest over 4 years with a 1-year ${G('cliff')}.`,
+    s:[`Founder 1: 1/48 per month from Jan 1, 2003. Founder 2: from Apr 1, 2003. No cliff.`,`If terminated without cause: vesting jumps by the greater of +12.5%, or up to 37.5% vested in total.`,`A change of title is <b>not</b> a constructive termination.`,`Employees and consultants: 25% after 12 months, then 1/48 monthly.`],
+    w:`Re-vesting founders protects the investor if a founder leaves. The credit for past time and the acceleration are concessions to the founders. The title clause lets the board demote a founder without triggering acceleration.`},
+   {t:`Voting rights & board`,b:"base",f:"Balanced",k:`Preferred votes as-converted. The board is 4 seats split 2–2 (founders vs. Investor 1) and shrinks to 3 later.`,
+    s:[`Initial board: Founder 1, Founder 2, two Investor 1 representatives.`,`Common elects 1 (the "Common Director"), preferred elects 1 (the "Preferred Director"), the rest are elected jointly, and the CEO must hold a seat.`,`The board shrinks to 3 (Founder 2 and the second Investor 1 rep resign) at the earliest of: an agreed outside director, a CEO change, or the next equity round.`,`Board meetings can be called by any 2 directors or by 25% of the preferred.`],
+    w:`A deadlock-prone 2–2 split, designed to move to 1 founder + 1 investor + 1 independent. Control rests on the vetoes, not the board.`},
+   {t:`${G('lock')}`,b:"base",f:"Neutral",k:`180 days after the IPO, if the underwriters ask.`,s:[`Applies to every holder of registration rights.`],w:`Standard. It gives underwriters a stable market after the IPO.`},
+  ],
+  deal:[
+   {t:`Registration rights`,b:"base",f:"Investor",k:`3 ${G('demand','demands')} (≥$5M each), unlimited ${G('piggy','piggybacks')}, unlimited ${G('s3')}. The company pays.`,
+    s:[`Demands: start at the earlier of 3 years after closing or 6 months after the IPO; 3 demands of ≥$5M each; initiated by a majority of registrable shares.`,`Piggyback: unlimited, cutback to no less than 30% of the offering (can be cut to zero in the IPO).`,`S-3: unlimited, no more than 2 a year, ≥$1M each.`,`The company pays expenses plus one special counsel for the sellers.`,`Transferable to buyers of ≥200k shares (or to affiliates without a minimum).`],
+    x:[`Ends at the earliest of: 5 years after the IPO, when the holder can sell everything within 3 months under ${G('r144')}, or an acquisition.`],
+    w:`This is the investor's route to cash after an IPO. It matters little now and is copied almost word for word into Series B.`},
+   {t:`Information rights`,b:"base",f:"Investor",k:`Holders of ≥1M shares get monthly, quarterly and annual financials plus the budget.`,s:[`Ends at the IPO, on becoming an SEC reporting company, or at an acquisition.`],w:`Standard monitoring for a VC.`},
+   {t:`Closing conditions`,b:"base",f:"Investor",k:`Business plan acceptable to Investor 1, ${G('pii','PIIAs')}, due diligence and a ${G('mgmt')}.`,
+    s:[`1. A business plan acceptable to Investor 1.`,`2. Every employee and consultant signs an IP assignment.`,`3. Satisfactory due diligence.`,`4. A management rights letter.`,`The company pays Investor 1's legal fees, with <b>no cap</b>.`],
+    w:`Light conditions for an early-stage deal. Requiring a business plan shows the company is still very early.`},
+   {t:`${G('noshop')}`,b:"base",f:"Company",k:`None. The term sheet is entirely non-binding.`,s:[`No exclusivity clause.`],w:`${I}A friendly, relationship-driven deal. Investor 1 didn't need to lock the company up.`},
+  ]}
+},
+B:{
+  name:"Series B", date:"Aug 2005", acc:"var(--sB)", mood:["chg","Flat round"],
+  lede:`Two years later the price is still $1.00. Investor 1 leads again, joined by Investor 2. The document is company counsel's Series A template with small edits: B ranks equally with A, and vote thresholds move to two-thirds.`,
+  stats:[["Raised","$5M–$7M","Closed ≈ $7.18M (per Series C cap table)"],["Price / share","$1.00","Same as Series A (flat)"],["Pre-money","≈ $6.5M","6.44M shares × $1.00"],["Post-closing","I1 ≈ 54% · I2 ≈ 21%","Founders ≈ 10% (fully diluted)"]],
+  big:`The headline is what <b>did not</b> change: the same $1.00 price and almost identical terms. Series B is ${G('pp','pari passu')} with A on everything. The real shifts: <b>66⅔% supermajorities</b>, <b>a 1.6M-share pool for new management</b>, founders drop to one board seat, and the "ratchet back up" anti-dilution feature is gone.`,
+  cards:{
+  econ:[
+   {t:"Price & size of financing",b:"chg",f:"Balanced",k:`$5–7M at $1.00/share: a ${G('flat')}. Pre-money ≈ $6.5M.`,
+    s:[`Planned: Investor 1 $2.5M, Investor 2 $2.5M, a TBD investor up to $2M.`,`Pre-money ≈ $6.44M = 6.44M fully diluted shares × $1.00.`,`Per the Series C cap table, B closed at <b>7,175,000 shares</b>: Investor 1 3.75M, Investor 2 3.25M, CEO 100k, others 75k.`],
+    x:[`The third investor ("TBD") must be agreed on by Investor 1, Investor 2 and the company.`],
+    w:`${I}No step-up in price after two years, with the insider leading again, suggests progress is slower than hoped. The pre-money rose only because Investor 1 had bought more Series A shares, not because each share was worth more.`},
+   {t:"Option pool",b:"tight",txt:"Much bigger",f:"Employees",k:`1.6M new shares reserved (≈12% of fully diluted shares, up from 4%).`,
+    s:[`1,600,000 common shares reserved and remaining under the 2003 Equity Incentive Plan.`,`About 358k options were already outstanding.`],
+    w:`The company needs to hire senior management. ${I}A CEO holds 875k options by Series C and Founder 1 steps back to being "a founder" on the board. In the cap table the pool sits post-money, so the B investors share the dilution.`},
+   {t:`${G('pref','Preferred stock')}`,b:"chg",f:"Investor",k:`Series B ranks ${G('pp','pari passu')} with Series A on dividends and liquidation. Together they are "the Preferred Stock."`,
+    s:[`Converts 1:1, with the same economic rights as A.`],w:`Equal treatment is natural because the same lead (Investor 1) holds both classes.`},
+   {t:`${G('lp')} & ${G('part')}`,b:"chg",txt:"Clarified",f:"Investor",k:`Same 1× + participation up to 2×, now pari passu with A. Adds an explicit "greater of" rule and covers later payouts.`,
+    s:[`A and B take 1× (plus declared dividends) first, pro rata between them.`,`Then they participate as-converted until each has received 2× in total; the rest goes to common.`,`<b>New:</b> in an acquisition, preferred receives the GREATER of (A) the preference or (B) what it would get as common, both at closing and on any later earnout or escrow payments.`],
+    x:[`Same three non-liquidation exceptions as A (subsidiary merger, reincorporation, financing where the company survives).`],
+    w:`Better drafting rather than a new economic term. The earnout language stops the preference from being bypassed by moving deal value into contingent payments.`},
+   {t:"Dividends",b:"same",f:"Neutral",k:`8% non-cumulative, if declared; B pari passu with A.`,s:[`Same as Series A.`],w:`Still a formality.`},
+   {t:"Redemption",b:"same",f:"Company",k:`None.`,s:[`"The Preferred Stock will not be redeemable."`],w:`Unchanged.`},
+   {t:"Conversion",b:"tight",f:"Investor",k:`Automatic conversion now needs a 66⅔% preferred vote (was a majority). The IPO trigger is still ≥$20M.`,
+    s:[`Voluntary: 1:1 at any time.`,`Automatic: 66⅔% of the preferred voting together, OR an underwritten IPO with ≥$20M net proceeds.`],
+    w:`${I}After the actual close, Investor 1 holds ~70% of the preferred, so it can still force conversion alone. With the full $7M including the TBD investor, it would have had ~61% and needed a partner. The threshold looks designed to give the co-investors a say.`},
+   {t:"Anti-dilution protection",b:"tight",f:"Investor",k:`Broad-based weighted average, but the A-style "ratchet back up" is gone. The conversion price can never rise above $1.00.`,
+    s:[`Proportional adjustment for splits and dividends; broad-based weighted average for dilutive issuances.`,`The conversion price is capped at the original purchase price.`],
+    x:[`Eight carve-outs, reorganized: conversions, option plan, existing warrants, non-cash board-approved M&A or alliances, board-approved equipment or bank debt, IPOs <b>that convert all preferred</b>, board-approved strategic deals <b>"other than for equity financing purposes"</b>, and anything majority-preferred exempts.`],
+    w:`The tighter carve-outs stop the company from calling a cheap financing a "strategic deal" to avoid anti-dilution. Removing the upward re-adjustment is a small win for investors.`},
+  ],
+  ctrl:[
+   {t:`${G('pp2')}`,b:"chg",f:"Mixed",k:`The threshold rises to 66⅔%. Charter amendments now need approval only if they ADVERSELY affect the preferred.`,
+    s:[`Same core list: sale or change of control, authorized shares, senior or parity securities (now vs. <b>any</b> series), common dividends, repurchases, option plan size, number of directors.`],
+    x:[`Narrower than A: an ordinary charter or bylaw amendment no longer needs a preferred vote unless it hurts the preferred.`],
+    w:`Supermajority = Investor 1 + Investor 2 in most configurations. The company gains a little flexibility on routine charter changes.`},
+   {t:`${G('rofo')}`,b:"chg",f:"Investor",k:`Now any holder of ≥1M Preferred shares (A or B), not just Series A.`,
+    s:[`Pro rata as-converted, purchase within 15 days, same terms as third parties; ends at an IPO or acquisition.`],x:[`Carve-outs mirror the B anti-dilution list, plus issuances the board unanimously agrees not to offer to existing holders; the accredited-investor exception remains.`],
+    w:`Investor 2 gets the same protection as Investor 1.`},
+   {t:`${G('cosale')} & ${G('rofr')}`,b:"same",f:"Investor",k:`Identical to Series A.`,s:[`Co-sale on founder and officer sales; company ROFR passes to the preferred.`],x:[`Estate planning; 1% of each founder's common.`],w:`Unchanged.`},
+   {t:`Vesting`,b:"loose",f:"Company",k:`The founder vesting section is dropped. Employee vesting is the same, but the board can now approve exceptions.`,
+    s:[`Employees: 25% after 12 months, then monthly, <b>"without the approval of a majority of the Board"</b> for any other schedule.`],
+    w:`${I}The founders' schedules from A keep running. The new board flexibility helps the company attract a CEO with negotiated vesting terms.`},
+   {t:`Voting rights & board`,b:"chg",f:"Investor",k:`5 seats: Founder 1 (Common), Investor 1 (Preferred), and joint seats for Investor 2 and an outside director. One seat is vacant.`,
+    s:[`Common elects 1 (initially Founder 1); preferred elects 1 (initially an Investor 1 rep); the rest are elected jointly.`,`Voting agreement: the CEO, an Investor 1 designee and an Investor 2 designee each hold a seat.`,`Founder 2 is off the board, consistent with the A "shrink" trigger on the next financing.`],
+    w:`Founders go from 2 of 4 seats to 1 of 4 filled seats. Investors hold 2, and the independent director is the swing vote.`},
+   {t:`${G('lock')}`,b:"same",f:"Neutral",k:`180 days after the IPO, if the underwriters ask.`,s:[`Same as A.`],w:`Unchanged.`},
+  ],
+  deal:[
+   {t:`Registration rights`,b:"same",f:"Investor",k:`Same package as A: 3 demands, unlimited piggyback (30% floor), S-3 twice a year.`,
+    s:[`Counsel for the selling holders is now capped at <b>$25,000</b>.`,`Termination adds a condition: the holder must also own <1% of common after the IPO.`,`"Other customary provisions" (cross-indemnification and similar) are pushed to the Investor Rights Agreement.`],
+    w:`A copy of the template with small company-friendly edits (the fee cap and earlier termination for small holders).`},
+   {t:`Information rights`,b:"chg",f:"Investor",k:`Extended to any Preferred holder with ≥1M shares.`,s:[`Monthly, quarterly and annual financials plus the budget.`],w:`Investor 2 qualifies.`},
+   {t:`Closing conditions`,b:"loose",f:"Company",k:`Only legal documents and due diligence. No business-plan or management-letter conditions.`,
+    s:[`1. Legal documentation satisfactory to the investors.`,`2. Satisfactory due diligence.`,`The company pays one investor counsel, <b>capped at $25,000</b> (A was uncapped).`],
+    w:`An insider-led round with little left to verify.`},
+   {t:`${G('noshop')}`,b:"same",f:"Company",k:`None.`,s:[`No exclusivity.`],w:`Still a friendly, insider-driven deal.`},
+  ]}
+},
+C:{
+  name:"Series C", date:"Dec 2006", acc:"var(--sC)", mood:["tight","Down round"],
+  lede:`A new outside lead, Investor 3, prices the company 42% below Series B. The document is a short memo written by the investor, not company counsel's template. A large option pool is added pre-money, supermajorities rise to 70% and 90%, and for the first time there is a binding no-shop.`,
+  stats:[["Raised","$7.5M","I3 $3.6M · I1 $2.8M · I2 $1.1M"],["Price / share","$0.5825","−42% vs. $1.00"],["Pre / post-money","$10.5M / $18.0M","Fully diluted, incl. new pool"],["Investor 3 stake","20.0%","Founders fall to ≈ 4.9%"]],
+  big:`This is a ${G('down')}. Watch three things: (1) the <b>2.8M-share pool added before the money</b> (an ${G('shuffle')}), (2) <b>anti-dilution for A and B should have been triggered</b> by the lower price, and (3) the <b>new lead's protections</b>: a 90% vote on anything that hurts Series C, a 4× IPO hurdle, SBA paperwork and a binding 30-day no-shop.`,
+  cards:{
+  econ:[
+   {t:"Price & size of financing",b:"tight",txt:"Down round",f:"New investor",k:`$7.5M at $0.5825/share (−42%). Pre-money $10.5M, post-money $18.0M.`,
+    s:[`Investor 3 (new lead) $3.6M → 6,180,258 shares = 20.0%.`,`Existing investors $3.9M: Investor 1 $2.8M (4.81M shares), Investor 2 $1.1M (1.89M shares).`,`Total shares go from 18.0M to 30.9M (fully diluted).`],
+    x:[`The existing investors take more than half the round, so this is an insider-supported recapitalization with an outside price-setter.`],
+    w:`The outside investor sets the price, which is why it falls. Insiders keep investing to protect their earlier money. Founders and employees with $1.00-era expectations take the hit.`},
+   {t:"Option pool",b:"tight",txt:"Pre-money top-up",f:"New investor",k:`2.8M new shares added BEFORE the round (9.1% post-money), on top of 298k unissued.`,
+    s:[`Already issued: CEO 875k options, others 802k.`,`Unissued (2003 Plan) 297,614 + "Addition pre-Series C" 2,800,000.`],
+    w:`Two reasons: (1) re-incentivize a team whose options are now underwater (the term sheet mentions <b>refresh grants</b>), and (2) the new investor insists the pool sits pre-money, so existing holders absorb the dilution and Investor 3 keeps its full 20%.`},
+   {t:`${G('pref','Preferred stock')}`,b:"same",f:"Balanced",k:`A, B and C are all ${G('pp','pari passu')}. No seniority for the new money.`,
+    s:[`Each series keeps its own original price ($1.00, $1.00, $0.5825).`],
+    w:`${I}Notable for a down round: Investor 3 did not demand seniority. That may be because the insiders put in more than half the money and it was simpler to stay equal.`},
+   {t:`${G('lp')} & ${G('part')}`,b:"chg",f:"Investor",k:`1× + participation up to 2×, pari passu across A, B and C. The deemed-liquidation definition is simplified.`,
+    s:[`Same three-step waterfall as before; the 2× cap is per series (C's cap = $1.165/share).`,`Liquidation = any merger or transaction in which <b>control is transferred</b>, or substantially all assets are sold.`],
+    x:[`The earlier detailed exceptions (subsidiary merger, reincorporation) are no longer spelled out.`],
+    w:`The 1× preference stack is now ≈ $19.25M, more than the $18M post-money. In a sale below that, common gets nothing.`},
+   {t:"Dividends",b:"chg",f:"Investor",k:`8% non-cumulative, if declared. New: preferred also shares as-converted in any OTHER distribution.`,
+    s:[`Applies to A, B and C at their respective prices.`],w:`It closes a gap: the company can't pay a special distribution to common only.`},
+   {t:"Redemption",b:"same",f:"Company",k:`None.`,s:[`"The Preferred Stock is not redeemable."`],w:`Unchanged.`},
+   {t:"Conversion",b:"tight",f:"New investor",k:`IPO auto-conversion now needs a price ≥ 4× the C price (≈$2.33) and >$15M proceeds. Otherwise, 70% of preferred.`,
+    s:[`Voluntary: any time.`,`Automatic: an underwritten IPO at ≥4× $0.5825 with >$15M proceeds, OR consent of 70% of the preferred.`],
+    w:`The 4× price hurdle guarantees Investor 3 a strong return before it can be forced into common. The dollar threshold is lower ($15M vs $20M).`},
+   {t:"Anti-dilution protection",b:"chg",f:"Investor",k:`Broad-based weighted average for any issuance below each series' own initial price. Exceptions are the same as the ROFO exclusions.`,
+    s:[`Proportional adjustment for splits and dividends.`,`Carve-outs = the ROFO exclusions (pool reserved at the C close, board-approved acquisitions and leases, conversions, splits).`],
+    x:[`<b>Did it apply to A and B?</b> The $0.5825 price is below $1.00, so their weighted-average protection should have been triggered. ${I}Had it applied, the A/B conversion price would have dropped to ≈ $0.83, giving ≈ 2.5M extra common-equivalent shares. Yet the C and D cap tables still show A and B at 1:1, which suggests Investors 1 and 2 (who own all of A and B and were buying C) <b>waived</b> it.`],
+    w:`A waiver is common when insiders lead a down round. Taking the adjustment would mostly dilute founders and employees, the people the company needs to keep.`},
+  ],
+  ctrl:[
+   {t:`${G('pp2')}`,b:"tight",f:"Investor",k:`70% of preferred for the major actions. 90% for anything that hurts Series C differently from the others.`,
+    s:[`70% list: senior or parity securities; change of control or asset sale; rights offerings; transfers of assets to shareholders; <b>any</b> charter or bylaw amendment; board size; liquidation.`,`90% for any of those that "differentially and adversely" affects Series C.`],
+    x:[`Option pool size and common dividends are no longer listed (the ROFO and anti-dilution pool definitions handle the pool).`],
+    w:`${I}Investor 1 alone holds ≈53% of the preferred, so it can block a 70% vote. Investors 1 and 2 together (≈74%) can pass one without Investor 3. Investor 3 (≈25%) can't block the 70% vote, so it got the 90% veto to stop the insiders from changing Series C's terms.`},
+   {t:`${G('rofo')}`,b:"chg",f:"Investor",k:`Every preferred holder gets pro rata participation in future rounds, with no 1M-share minimum.`,
+    s:[`Pro rata based on as-converted equity interest.`],x:[`Pool shares reserved at the C close; board-approved acquisitions (including the Preferred directors); board-approved leases, loans and strategic deals; conversions; splits.`],
+    w:`Investor 3 secures its right to follow on. Requiring the Preferred directors' approval for carve-outs gives investors a say over each exception.`},
+   {t:`Transfer restrictions: ${G('rofr','ROFR')} & ${G('cosale','co-sale')}`,b:"tight",f:"Investor",k:`No transfers before vesting. Company + investor ROFR on vested shares. Co-sale on founder sales.`,
+    s:[`Now covers <b>founders and employees</b>.`,`ROFR lasts until a qualifying IPO.`,`Post-IPO lock-up of up to 180 days.`],
+    x:[`Tax-planning and family transfers if the transferee agrees to the same restrictions.`],
+    w:`Locks down the cap table during a fragile period.`},
+   {t:`Vesting`,b:"chg",f:"Balanced",k:`4 years with a 1-year cliff for new grants. Refresh grants vest monthly. Unvested shares can be bought back at cost on any termination.`,
+    s:[`New hires: 25% after year 1, then monthly.`,`Refresh grants: monthly from the start, with no cliff.`,`Unvested shares can be repurchased at cost on termination for <b>any</b> reason.`],
+    w:`The no-cliff refresh grants exist to keep current employees whose old options are underwater.`},
+   {t:`Voting rights & board`,b:"chg",f:"Investor",k:`6 seats: Preferred elects 3 (Investors 1, 2 and 3), Common elects 2 (CEO + Founder 1), plus 1 outside director elected by all.`,
+    s:[`Preferred votes as-converted.`,`A voting agreement is a condition of closing.`],
+    w:`Investors 3, management 2, outside 1. Investors are one vote from control, and the outside director decides ties.`},
+   {t:`${G('lock')}`,b:"same",f:"Neutral",k:`Up to 180 days after the IPO.`,s:[`Listed under both registration rights and transfer restrictions.`],w:`Standard.`},
+  ],
+  deal:[
+   {t:`Registration rights`,b:"chg",f:"Mixed",k:`Fewer demands (2), starting later (5 years), but a 25% minority can trigger them. Piggyback floor 25%.`,
+    s:[`Demands: earlier of 5 years after closing or 6 months after the IPO; 2 demands; initiated by 25% of the preferred.`,`Piggyback: unlimited, cutback floor 25% (full cutback possible in the IPO).`,`S-3: unlimited, ≥$1M, initiated by 20% of the preferred.`,`Ends 7 years after the IPO or when Rule 144 allows a full sale.`],
+    w:`The low 25% and 20% initiation thresholds mean Investor 3 alone can force a registration, so the new minority investor isn't dependent on Investor 1.`},
+   {t:`Information rights`,b:"chg",f:"Investor",k:`Monthly, quarterly and annual financials plus the budget, and now inspection rights.`,s:[`"Customary" wording replaces the 1M-share minimum.`],w:`More oversight in a troubled period.`},
+   {t:`Closing conditions`,b:"tight",f:"Investor",k:`Legal opinion, indemnity for claims from predecessor companies, D&O insurance, and SBA-required checks.`,
+    s:[`Acceptable legal opinion from company counsel.`,`Indemnity for claims arising from <b>predecessor companies or their stockholders</b>.`,`D&O insurance acceptable to the investors.`,`${G('sbic','SBA')} documentation: background checks and education verification for key employees; a side letter on quarterly financial and headcount reporting.`,`Investor counsel paid up to <b>$30,000</b>.`],
+    w:`${I}The SBA requirements suggest Investor 3 is an SBIC. The predecessor-company indemnity hints at a past restructuring the new investor wants to be protected from.`},
+   {t:`${G('noshop')}`,b:"new",f:"New investor",k:`BINDING for 30 days: no other financing, recapitalization, asset sale or sale of the company.`,
+    s:[`The only binding paragraph in the memo.`,`The memo expires unless signed by noon on Dec 12, 2006 (four days after it is dated). Closing targeted for Dec 22.`],
+    w:`A new outside lead spending money on diligence wants exclusivity and a fast decision. The short deadline reflects the company's weak bargaining position.`},
+  ]}
+},
+D:{
+  name:"Series D", date:"Nov 2007", acc:"var(--sD)", mood:["loose","Up round"],
+  lede:`A new institutional lead, Investor 4 (bank-affiliated), invests $6M of a $10M round at a 24% step-up. In exchange it takes the first SENIOR preference, a drag-along, operating vetoes, a board observer and committee seats, and a long list of closing conditions. This is the most investor-protective document of the four.`,
+  stats:[["Raised","$10.0M","I4 $6.0M · insiders $4.0M pro rata"],["Price / share","$0.7234","+24% vs C, still below $1.00"],["Pre / post-money","$24M / $34M","Pool 8.16% inside the pre-money"],["Investor 4 stake","17.65%","Founders ≈ 4.5% incl. options"]],
+  big:`New money, new hierarchy. Series D is <b>${G('senior')}</b> to A, B and C for the first time, so the 1× preference stack totals ≈ <b>$29.25M</b> with D's $10M paid first. Add a <b>${G('drag')}</b>, <b>12 protective provisions that reach into day-to-day operations</b>, and a <b>4–2–1 investor-majority board</b>.`,
+  cards:{
+  econ:[
+   {t:"Price & size of financing",b:"loose",txt:"Up round",f:"Balanced",k:`$10M at $0.7234/share. Pre-money $24M, post-money $34M.`,
+    s:[`Investor 4 $6.0M (8.29M shares, 17.65%).`,`Pro rata from existing holders: Investor 1 $2.13M, Investor 2 $0.84M, Investor 3 $1.01M, CEO $16k, others $12k.`,`The price floats so that pre-money stays exactly $24M on the final fully diluted count.`],
+    x:[`Any part of the "others" $12k not taken up is reallocated to Investors 1–3.`,`Bridge loans before closing may not carry warrants or discounts, and interest is capped at the ${G('afr')}.`],
+    w:`A real step-up (+24%), but A and B holders are still under water at $0.72 versus their $1.00. The bridge-loan clause stops insiders from extracting extra value from interim financing.`},
+   {t:"Option pool",b:"tight",txt:"Pre-money",f:"New investor",k:`Unallocated pool = 8.16% of post-money fully diluted shares, created out of the pre-money.`,
+    s:[`New 2.27M shares + 1.56M authorized but unissued.`,`CEO now holds 1.475M options; Founders 1 and 2 each receive 300k options.`],
+    x:[`Any issuance beyond the pool that the board majority hasn't approved counts as a dilutive event: it triggers anti-dilution and the investors' ROFR.`],
+    w:`The same ${G('shuffle')} as in C. Investor 4 isn't diluted by future hires, and the effective pre-money for existing holders is lower than $24M.`},
+   {t:`${G('pref','Preferred stock')} & ranking`,b:"new",f:"New investor",k:`"Series D Convertible Participating Preferred," SENIOR to C, B, A and common on dividends, liquidation, redemption and dissolution.`,
+    s:[`Converts 1:1 initially.`,`The first time any series ranks ahead of the others.`],
+    w:`The price of new money at a time when the company needs it. Earlier investors give up equal ranking.`},
+   {t:`${G('lp')} & ${G('part')}`,b:"tight",f:"New investor",k:`D gets 1× first, then A/B/C get 1× pari passu, then everyone participates until each reaches 2×, then common.`,
+    s:[`Step 1: Series D receives 100% of $0.7234 plus accrued, unpaid dividends.`,`Step 2: A, B and C receive 100% of their original prices, pari passu.`,`Step 3: pro rata as-converted until the preferred has received 2× in total.`,`Step 4: the rest to common.`],
+    x:[`Broader liquidation trigger: a transfer of ≥50% of voting power, or a sale or <b>exclusive license</b> of substantially all assets or IP.`,`Exceptions: licenses for specific foreign-market strategies, exclusive licenses of less than substantially all IP, reincorporation or holding-company moves.`,`66⅔% of the preferred can waive liquidation treatment for a deal.`],
+    w:`1× stack ≈ $29.25M (D $10M + A/B/C $19.25M). Below about that exit value, common (founders and employees) gets nothing, and below $10M only Series D gets paid.`},
+   {t:"Dividends",b:"tight",f:"New investor",k:`8% non-cumulative, but D is paid first, and no junior dividends until D has received its "accrued and unpaid" amounts. Can be ${G('pik','paid in kind')}.`,
+    s:[`D preference over C, B, A and common; others 8% non-cumulative.`,`PIK dividends are valued at each series' original price.`,`Preferred participates as-converted in other distributions.`],
+    w:`${I}"Non-cumulative" alongside "accrued but unpaid" is internally inconsistent, a classic point for counsel to clean up. Either way it pushes D to the front.`},
+   {t:"Redemption",b:"chg",f:"Neutral",k:`No redemption right is granted, but "redemption" now appears in the ranking clause.`,
+    s:[`D ranks senior "with respect to dividends, liquidation, redemption and dissolution."`],w:`${I}No investor put right exists. The mention just makes sure D comes first if a buyback ever happens.`},
+   {t:"Conversion",b:"tight",f:"New investor",k:`Automatic on a ${G('qipo')}: firm underwriting, a major exchange, ≥3× the D price (≈$2.17), ≥$30M gross. Or a 66⅔% preferred vote.`,
+    s:[`Voluntary: any time, 1:1.`,`Must be on NYSE, NASDAQ or AMEX.`],
+    w:`The highest bar of the four (proceeds) and a 3× price hurdle, so Investor 4 can't be pushed into common by a weak IPO.`},
+   {t:"Anti-dilution protection",b:"chg",f:"Investor",k:`Broad-based weighted average for EVERY series, triggered by any issuance below the Series D conversion price.`,
+    s:[`Also proportional adjustment for splits, dividends and recapitalizations.`],
+    x:[`Employee Pool shares (or a larger number the board approves) and "other customary exceptions."`],
+    w:`One common trigger (the D price) for all series. Simpler, and it aligns everyone against a future down round.`},
+  ],
+  ctrl:[
+   {t:`${G('pp2')}`,b:"tight",f:"Investor",k:`12 vetoes at 66⅔% of preferred, several of them operational. A separate Series D class vote applies to D-specific changes.`,
+    s:[`I–VIII (structural): alter preferred rights; increase, decrease or <b>issue</b> any preferred or common; issue <b>any debt</b> or senior/parity stock; redemptions; <b>any dividend</b>; adverse charter changes; merger, recapitalization, change of control, asset sale or <b>exclusive license</b>, liquidation; board size.`,`IX–XII (operational, unless a board majority approves): related-party deals; pool increases; debt above budget or liens; contracts >$250k each or >$500k in total, or capex >$250k.`,`A Series D majority must approve any change that treats D worse than A, B or C.`],
+    x:[`Repurchases at cost from departing employees are allowed. Items IX–XII can be cleared by a board majority instead of the shareholder vote.`],
+    w:`${I}Investors now reach into budgets and contracts. Investor 1 (≈42% of preferred) can still block alone. Investor 4 holds 60% of Series D, so it controls the D class vote by itself.`},
+   {t:`${G('rofo','Pre-emptive rights')}`,b:"chg",f:"Investor",k:`"Major Holders" (≥1M shares) can buy their pro rata share of any new securities, with over-allotment of unclaimed shares.`,
+    s:[`Pro rata on a fully diluted basis, including options.`,`Shares not taken by one Major Holder can be reallocated to the others.`,`Ends at a Qualified IPO.`],x:[`Employee Pool shares; board-approved acquisitions.`],
+    w:`The over-allotment lets the biggest funds absorb any shares smaller holders pass on.`},
+   {t:`${G('rofr')} & ${G('cosale')}`,b:"chg",f:"Investor",k:`Key common holders sign a separate agreement: the company has first ROFR, Major Holders second, plus proportional co-sale.`,
+    s:[`Applies to all key common holders unless the Major Holders waive it.`],w:`Now formalized in a stand-alone agreement, which is standard institutional practice.`},
+   {t:`${G('drag')}`,b:"new",f:"Investor",k:`If 66⅔% of preferred AND the board approve a sale, every holder bound by the agreement must vote for it and sell.`,
+    s:[`All holders take part on the same terms, respecting liquidation preferences.`,`Closing condition: every holder of ≥0.5% (fully diluted) must sign.`],
+    w:`Founders and employees can't hold up an exit, even one where the preference stack leaves them little. A key tool for investors who want liquidity.`},
+   {t:`Vesting`,b:"same",f:"Balanced",k:`25% after year 1, then 36 monthly installments. Unvested shares repurchasable at cost on any termination.`,
+    s:[`The board majority can approve a different schedule.`,`Existing vesting arrangements remain in effect.`],w:`Standard terms, restated.`},
+   {t:`Voting rights & board`,b:"tight",f:"Investor",k:`7 seats: Preferred elects 4 (Investors 1–4), Common elects 2 (including the CEO), 1 elected jointly. Investor 4 also gets an ${G('obs','observer')} and a seat on every committee.`,
+    s:[`Preferred votes with common, as-converted, except where class votes apply.`,`Investor 4's director sits on all committees (Audit, Compensation).`,`Non-employee directors' expenses are reimbursed.`],
+    w:`<b>For the first time investors hold an outright board majority (4 of 7).</b> Investor 4 gets an outsized voice through its committee seats and observer.`},
+   {t:`${G('lock')}`,b:"chg",f:"Balanced",k:`Up to 180 days, but only if ALL officers, directors and 1% holders are bound too.`,s:[`Investors' version of "most favored nation" fairness.`],w:`Investors won't be locked up while insiders sell.`},
+  ],
+  deal:[
+   {t:`Registration rights`,b:"chg",f:"Investor",k:`2 demands (≥20% of shares or $10M) by 25% holders; piggyback priority; unlimited S-3 (max 2 per 12 months).`,
+    s:[`Demands: earlier of 3 years after the D close or 6 months after the IPO; the company may delay twice for ≤60 days in any 12 months.`,`Piggyback: floor of 25% in non-IPO offerings; investors take priority over other holders; no new parity or superior piggybacks without 60% approval.`,`The company pays expenses (one counsel for all holders).`,`Ends at the earlier of when ${G('r144','Rule 144(k)')} allows unrestricted sale, or 5 years after the IPO.`],
+    w:`More precise and protective. The anti-parity clause stops later investors from squeezing these holders out of offerings.`},
+   {t:`Information rights`,b:"tight",f:"Investor",k:`Audited annual statements within 120 days, quarterly within 45, monthly vs. plan within 30, budget within 45 days of year end. Inspection rights. The Audit Committee picks auditors.`,
+    s:[`For holders of ≥1M shares; ends at a Qualified IPO.`],w:`Institutional-grade reporting with hard deadlines, comparing results against the plan.`},
+   {t:`Closing conditions`,b:"tight",f:"New investor",k:`Ten conditions, including IP assignments, ${G('bhca','Bank Holding Company Act')} compliance, no ${G('mac')}, D&O + E&O insurance and ${G('keyman')}.`,
+    s:[`Diligence and documents satisfactory to the investors "in their sole discretion."`,`Assignment of all IP from any other claimants; ${G('pii','PIIAs')} from <b>current and former</b> staff.`,`Investor 4 must confirm the deal complies with the Bank Holding Company Act.`,`No material adverse change; investment committee approvals.`,`D&O at closing; E&O within 30 days; key-man life insurance on the CEO and Founder 2.`,`The company acknowledges Investor 4's affiliates have NOT promised to buy its products.`,`Indemnification agreement for the Series D director; Investor 4 may amend the terms after diligence.`,`Fees: up to $45k ($35k counsel + $10k diligence).`],
+    w:`${I}The IP-claimant and "former staff" items suggest past IP ownership questions. The no-commercial-promise clause hints that Investor 4 is a strategic or bank-affiliated investor whose affiliates could also be customers. Many outs for the investor and few for the company.`},
+   {t:`${G('noshop')}`,b:"tight",f:"New investor",k:`Binding until Dec 21, 2007 (extends automatically while closing is being pursued in good faith). Includes confidentiality.`,
+    s:[`No soliciting or negotiating equity sales, a sale of substantial assets, or mergers with anyone other than the investors.`,`Offer open only until Nov 28, 2007 (8 days).`],
+    x:[`Employee Pool issuances and warrants tied to lending.`,`Ends early if the investors walk away or Investor 4's investment committee says no.`],
+    w:`Longer and more one-sided than C's: the company is locked up, while Investor 4 can leave if its committee declines.`},
+   {t:`Other notable terms`,b:"new",f:"Investor",k:`Transfers to affiliates allowed (but not to competitors); finders' fee cross-indemnity; the investor counsel is "Law Firm 1."`,
+    s:[`Investors may transfer D shares to affiliated funds or entities that are not competitors.`,`${I}Law Firm 1 was <b>company</b> counsel in A and B and is <b>investor</b> counsel here, a notable change of sides.`],
+    w:`Shows how far negotiating power has moved to the new money.`},
+  ]}
+},
+};
+
+/* ---------------- Summary data ---------------- */
+const CMP=[
+ ["Economics"],
+ ["Price / share",["$1.00","base"],["$1.00 (flat)","same"],["$0.5825 (−42%)","tight"],["$0.7234 (+24%)","loose"]],
+ ["Pre / post-money",["$1.6M / $3.1M","base"],["≈$6.5M / ≈$15.2M","chg"],["$10.5M / $18.0M","chg"],["$24M / $34M","chg"]],
+ ["Amount raised",["$1.5M (later extended)","base"],["$5–7M (≈$7.18M closed)","chg"],["$7.5M","chg"],["$10M","chg"]],
+ ["Lead / new money",["Investor 1 (sole)","base"],["Investor 1 + Investor 2","chg"],["Investor 3 (new, likely SBIC)","new"],["Investor 4 (new, bank-affiliated)","new"]],
+ ["Option pool",["125k (4%)","base"],["1.6M new (≈12% FD)","tight"],["+2.8M pre-money (9%)","tight"],["8.16% unallocated, pre-money","tight"]],
+ ["Liquidation rank",["A over common","base"],["A = B (pari passu)","chg"],["A = B = C","same"],["D senior; then A = B = C","tight"]],
+ ["Liquidation pref.",["1× + participate to 2× cap","base"],["Same + 'greater of' + earnouts","chg"],["Same; simpler definition","same"],["Same, stacked; IP license = liquidation","tight"]],
+ ["Dividends",["8% non-cum., if declared","base"],["Same, pari passu","same"],["Same + share other distributions","chg"],["D first; 'accrued' language; PIK","tight"]],
+ ["Redemption",["None","base"],["None","same"],["None","same"],["None granted (ranked)","same"]],
+ ["Auto-conversion",["Majority pref. or IPO ≥$20M net","base"],["66⅔% or IPO ≥$20M","tight"],["70% or IPO ≥4× price & >$15M","tight"],["66⅔% or Qualified IPO ≥3× & ≥$30M","tight"]],
+ ["Anti-dilution",["Broad WA + 'ratchet back up'","base"],["Broad WA, capped at $1.00","tight"],["Broad WA vs. own price (A/B likely waived)","chg"],["Broad WA keyed to D price","chg"]],
+ ["Control"],
+ ["Protective vote",["Majority pref.","base"],["66⅔%","tight"],["70% (90% for C-adverse)","tight"],["66⅔% + D class vote; 12 items","tight"]],
+ ["Operational vetoes",["None","base"],["None","same"],["None","same"],["Debt, budget, >$250k contracts, capex","new"]],
+ ["Board",["4: 2 founders, 2 Investor 1 (→ 3)","base"],["5: F1, Investors 1–2, outside, vacant","chg"],["6: 3 investors, CEO, F1, outside","chg"],["7: 4 investors, 2 common, 1 joint + observer","tight"]],
+ ["ROFO / pre-emptive",["≥1M Series A holders","base"],["≥1M any preferred","chg"],["All preferred, pro rata","chg"],["Major Holders + over-allotment","chg"]],
+ ["ROFR & co-sale",["Founders + officers","base"],["Same","same"],["Founders + employees; no pre-vest transfers","tight"],["Separate agreement; key holders","chg"]],
+ ["Drag-along",["—","base"],["—","same"],["—","same"],["66⅔% pref. + board","new"]],
+ ["Vesting",["Founders monthly + accel.; staff 1-yr cliff","base"],["Staff only; board may vary","loose"],["Cliff; refresh grants monthly","chg"],["Cliff + 36 mo.; board may vary","same"]],
+ ["Lock-up",["180 days","base"],["180 days","same"],["Up to 180 days","same"],["≤180 days if all insiders bound","chg"]],
+ ["Liquidity & deal"],
+ ["Demand registration",["3 × ≥$5M, majority, from 3 yrs","base"],["Same","same"],["2, 25% holders, from 5 yrs","chg"],["2, 25% holders, ≥20%/$10M, from 3 yrs","chg"]],
+ ["Closing conditions",["Plan, PIIA, diligence, mgmt letter","base"],["Docs + diligence","loose"],["Legal opinion, indemnity, D&O, SBA","tight"],["10 items: IP, BHCA, MAC, insurance, key-man","tight"]],
+ ["Investor legal fees",["Paid, uncapped","base"],["≤$25k","loose"],["≤$30k","chg"],["≤$45k","chg"]],
+ ["No-shop",["None","base"],["None","same"],["Binding 30 days","new"],["Binding to Dec 21 (auto-extends)","tight"]],
+ ["Document style",["Company-counsel template","base"],["Same template","same"],["Short investor memo","chg"],["Full institutional term sheet","chg"]],
+];
+
+const OWN={
+ series:[["Founders","var(--c1)"],["Employees & pool","var(--c2)"],["Investor 1","var(--c3)"],["Investor 2","var(--c4)"],["Investor 3","var(--c5)"],["Investor 4","var(--c6)"]],
+ rows:[["Post A",[48,4,48,0,0,0]],["Post B",[9.85,14.46,54.34,21.35,0,0]],["Post C",[4.85,16.19,42.33,16.63,20.00,0]],["Post D",[4.47,14.21,34.14,13.41,16.13,17.65]]]
+};
+const PRICE=[["A",1.00,"var(--sA)","$1.00"],["B",1.00,"var(--sB)","$1.00"],["C",0.5825,"var(--sC)","$0.5825"],["D",0.7234,"var(--sD)","$0.7234"]];
+const POST=[["A",3.125,"$3.1M"],["B",15.2,"≈$15.2M*"],["C",18.0,"$18.0M"],["D",34.0,"$34.0M"]];
+
+/* ---------------- "How it works" lessons ---------------- */
+const LESSONS=[["own","Valuation & ownership"],["pool","Option pool & dilution"],["anti","Anti-dilution"],["protect","Protective provisions"],["conv","Forced conversion"],["rofr","ROFR & co-sale"],["reg","Piggyback & registration"]];
+
+const ROUNDS={
+ A:{acc:"var(--sA)",price:"$1.00",
+  f:[["Pre-money","1,625,000 shares (founders 1.5M + pool 125k) × $1.00","= $1.625M"],["+ New money","Investor 1 buys 1,500,000 Series A shares","+ $1.5M"],["Post-money","3,125,000 shares × $1.00","= $3.125M"],["Check","$1.5M ÷ $3.125M","= 48% for Investor 1"]],
+  rows:[["Founder 1 (common)",900000,28.80,0],["Founder 2 (common)",600000,19.20,0],["Option pool (unissued)",125000,4.00,1],["Investor 1 · Series A",1500000,48.00,2]],
+  note:`The A round was later extended: by mid-2005 Investor 1 held ≈4.52M Series A shares, about 70% of the company just before Series B.`},
+ B:{acc:"var(--sB)",price:"$1.00",
+  f:[["Pre-money","≈6.45M fully diluted shares × $1.00 (term sheet says “approximately $6.5M”)","≈ $6.45M"],["+ New money","Investor 1 $3.75M · Investor 2 $3.25M · CEO $0.1M · others $0.075M","+ $7.175M"],["+ New pool","1.6M option shares added on top (post-money)","+ 1.6M sh"],["Post-money","≈15.23M shares × $1.00","≈ $15.2M"],["Check","$7.175M ÷ $15.2M","≈ 47% is Series B"]],
+  rows:[["Founder 1 (common)",900000,5.91,0],["Founder 2 (common)",600000,3.94,0],["CEO (875k options + 100k Series B)",975000,6.40,1],["Employees' granted options",801886,5.27,1],["Unissued option pool",297614,1.95,1],["Small holders (A warrants + Series B)",127437,0.84,1],["Investor 1 · 4.52M A + 3.75M B",8273424,54.34,2],["Investor 2 · Series B",3250000,21.35,3]],
+  note:`Rebuilt from the Series C cap table, minus the 2.8M pool that was added just before C. The term sheet planned $5–7M. These are the amounts that actually closed.`},
+ C:{acc:"var(--sC)",price:"$0.5825",
+  f:[["Pre-money","18,025,361 shares (including the new 2.8M pool) × $0.5825","= $10.50M"],["+ New money","Investor 3 $3.6M · Investor 1 $2.8M · Investor 2 $1.1M","+ $7.5M"],["Post-money","30,900,897 shares × $0.5825","= $18.0M"],["Check","$3.6M ÷ $18.0M","= 20.0% for Investor 3"]],
+  rows:[["Founder 1 (common)",900000,2.91,0],["Founder 2 (common)",600000,1.94,0],["CEO (options + Series B)",975000,3.16,1],["Employees' granted options",801886,2.60,1],["Old unissued pool",297614,0.96,1],["New pool (added pre-money)",2800000,9.06,1],["Small holders",127437,0.41,1],["Investor 1 · A + B + C",13080405,42.33,2],["Investor 2 · B + C",5138298,16.63,3],["Investor 3 · Series C",6180258,20.00,4]],
+  note:`All new Series C shares together = $7.5M ÷ $18.0M = 41.7% of the company: Investor 3 20.0%, Investor 1 15.6%, Investor 2 6.1%.`},
+ D:{acc:"var(--sD)",price:"$0.7234",
+  f:[["Pre-money","33,175,776 shares (including the new 2.27M pool) × $0.7234","= $24.0M"],["+ New money","Investor 4 $6.0M + existing investors $4.0M","+ $10.0M"],["Post-money","46,999,005 shares × $0.7234","= $34.0M"],["Check","$6.0M ÷ $34.0M","= 17.65% for Investor 4"]],
+  rows:[["Founder 1 (900k common + 300k options)",1200000,2.55,0],["Founder 2 (600k common + 300k options)",900000,1.91,0],["CEO (options + Series B)",1575000,3.35,1],["Other employees & holders",1216043,2.59,1],["Warrants",52437,0.11,1],["Unissued pool (existing)",1558457,3.32,1],["New pool (added pre-money)",2274878,4.84,1],["Investor 1 · A + B + C + D",16044687,34.14,2],["Investor 2 · B + C + D",6302738,13.41,3],["Investor 3 · C + D",7580828,16.13,4],["Investor 4 · Series D",8293937,17.65,5]],
+  note:`All new Series D shares together = $10M ÷ $34M = 29.4%: Investor 4 17.65%, plus pro rata top-ups by Investors 1, 2 and 3.`},
+};
+const GROUPS=["Founders","Employees & pool","Investor 1","Investor 2","Investor 3","Investor 4"];
+const GC=["var(--c1)","var(--c2)","var(--c3)","var(--c4)","var(--c5)","var(--c6)"];
+
+function howPanel(){
+  const p=document.createElement('section');p.className='panel';p.id='p-how';p.style.setProperty('--acc','var(--navy-2)');
+  const L=(id,n,title,one,body)=>`<article class="lesson" id="L-${id}"><div class="lesson-h"><div class="n">${n}</div><h3>${title}</h3></div><div class="one"><b>In one sentence</b>${one}</div>${body}</article>`;
+  let h=`<div class="hero" style="grid-template-columns:1fr;border-bottom-color:var(--navy-2)">
+   <div><h2>How it works <span class="pill acc" style="--acc:var(--navy-2)">Concepts</span></h2>
+   <p class="lede">Plain-English lessons on the mechanics that are easiest to get wrong, worked through with Company, Inc.'s real numbers. The term cards in each Series tab link back here.</p></div></div>
+   <div class="toolbar" role="navigation" aria-label="Lessons">${LESSONS.map((l,i)=>`<button class="chip" data-jump="${l[0]}">${i+1} · ${l[1]}</button>`).join('')}</div>`;
+
+  /* 1 ─ Valuation & ownership */
+  h+=L('own',1,'Pre-money, post-money & who owns what',
+   `Pre-money is what the company is worth before the new cash, post-money is that plus the cash, and each holder's slice is their shares ÷ all shares.`,
+   `<div class="rules">
+     <div class="rule"><span>Price per share</span><b>= Pre-money ÷ shares before the round</b></div>
+     <div class="rule"><span>Post-money</span><b>= Pre-money + new cash</b></div>
+     <div class="rule"><span>New investor %</span><b>= Its cash ÷ Post-money</b></div>
+     <div class="rule"><span>Anyone's %</span><b>= Their shares ÷ total fully diluted shares</b></div>
+   </div>
+   <h4 class="mini">Share count walk: pre-money shares + new shares = post-money shares</h4>
+   <div class="tbl-wrap"><table class="num" style="min-width:640px"><thead><tr><th>Round</th><th>Pre-money shares</th><th>+ New round shares</th><th>+ Pool added after pricing</th><th>= Post-money shares</th><th>Price</th><th>Post-money $</th></tr></thead><tbody>
+    <tr><td><b>A</b></td><td>1,625,000</td><td>1,500,000</td><td>—</td><td><b>3,125,000</b></td><td>$1.00</td><td>$3.125M</td></tr>
+    <tr><td><b>A extended</b></td><td colspan="3" style="text-align:left">Investor 1 buys ≈3M more Series A shares at $1.00 (2003–05)</td><td><b>≈6.45M</b></td><td>$1.00</td><td>≈$6.45M</td></tr>
+    <tr><td><b>B</b></td><td>≈6,450,361</td><td>7,175,000</td><td>1,600,000</td><td><b>15,225,361</b></td><td>$1.00</td><td>≈$15.2M</td></tr>
+    <tr><td><b>C</b></td><td>18,025,361<br><small>15,225,361 + 2,800,000 new pool</small></td><td>12,875,536</td><td>—</td><td><b>30,900,897</b></td><td>$0.5825</td><td>$18.0M</td></tr>
+    <tr><td><b>D</b></td><td>33,175,776<br><small>30,900,897 + 2,274,879 new pool</small></td><td>13,823,229</td><td>—</td><td><b>46,999,005</b></td><td>$0.7234</td><td>$34.0M</td></tr>
+   </tbody></table></div>
+   <p class="note">Each round's post-money count becomes the next round's starting point. In C and D the new pool is added <i>before</i> pricing, so it sits inside the pre-money count. In B it was added on top. Check for D: Investor 4's 8,293,937 ÷ 46,999,005 = 17.65%. B's pre-money count is derived from the Series C cap table because the term sheet gives only “approximately $6.5M.”</p>
+   <h4 class="mini">Pick a round to see the math and who owns what</h4>
+   <div class="seg" role="tablist" aria-label="Pick a round" id="own-seg">${['A','B','C','D'].map(r=>`<button role="tab" data-r="${r}" style="--rc:${ROUNDS[r].acc}">Series ${r}</button>`).join('')}</div>
+   <div id="own-out"></div>`);
+
+  /* 2 ─ Option pool & dilution */
+  h+=L('pool',2,'The option pool, “fully diluted” and who pays for dilution',
+   `The option pool is a block of shares set aside (not sold) for future employee grants. Creating it shrinks everyone's percentage, and whose percentage shrinks depends on whether it is added before or after the price is set.`,
+   `<div class="tiles">
+     <div class="tile"><h4>What is the pool?</h4><p>A reserve of common shares the board may later grant as stock options to employees, directors and consultants. Nobody owns them yet. In Series B, “1,600,000 shares … reserved and remaining” means 1.6M shares were set aside in that bucket.</p></div>
+     <div class="tile"><h4>At what price were the 1.6M shares issued?</h4><p><b>At no price. They weren't sold.</b> Reserving shares costs nothing and brings in no cash. When the board later grants an option, it sets an <b>exercise (strike) price</b> equal to the fair market value of the <i>common</i> stock on the grant date. The employee pays that price only on exercise. The term sheet doesn't state strike prices. Common is usually valued <i>below</i> the $1.00 preferred price because it has no preferences.</p></div>
+     <div class="tile"><h4>What does “diluted” mean?</h4><p>Your <b>number of shares stays the same</b>, but the total number of shares grows, so your <b>percentage</b> gets smaller. Think of the same number of slices from a pizza that's been cut into more slices. Dilution is about ownership share, not cash: nobody's money is taken. If the company's value grows enough, a smaller slice can still be worth more.</p></div>
+     <div class="tile"><h4>What is “fully diluted”?</h4><p>Counting <b>every share that exists or could exist</b>: common + preferred (as if converted) + granted options + the unissued pool + warrants. VCs price deals on this basis so that future option grants are already “in the count.” In Series B: ≈13.3M shares were actually issued (common + preferred), but ≈15.2M fully diluted once granted options and the unissued pool are added.</p></div>
+   </div>
+   <h4 class="mini">Whose percentage pays for the pool? It depends on the round</h4>
+   <p class="mini-p"><b>Rule of thumb:</b> if the pool is added <b>after</b> the price is fixed (post-money), <b>everyone</b> is diluted proportionally, the new investor included. If it is placed <b>inside the pre-money</b> (the ${G('shuffle','option pool shuffle')}), the price per share drops so the new investor keeps its target %, and <b>only the existing holders</b> pay.</p>
+   <div class="tbl-wrap"><table class="cmp" style="min-width:640px"><thead><tr><th>Round</th><th>Where the pool sits</th><th>Who is diluted</th><th>In numbers</th></tr></thead><tbody>
+    <tr><th>A · 125k</th><td>Alongside the $1.00 price</td><td><b>Founders and Investor 1, equally</b></td><td>Without the pool it would be 50 / 50. With it, 48 / 48 / 4.</td></tr>
+    <tr><th>B · 1.6M</th><td>Post-money (on top of the $1.00 price)</td><td><b>Everyone, including the new B investors</b></td><td>$5M version in the term sheet's exhibit: every holder × 0.877. Investor 1 61.2% → 53.7%, Investor 2 21.9% → 19.2%, common & options 16.5% → 14.5%, pool 0 → 12.3%.</td></tr>
+    <tr><th>C · 2.8M</th><td>Pre-money</td><td><b>Pre-C holders only</b> (founders, employees, Investors 1 & 2). Investor 3 still gets exactly 20%</td><td>Same $10.5M pre-money without the pool would mean ≈$0.69/share, not $0.5825. The pool cost existing holders ≈$1.63M of value, an effective pre-money of ≈$8.9M.</td></tr>
+    <tr><th>D · 8.16%</th><td>Pre-money</td><td><b>Pre-D holders only</b> (including Investors 1–3). Investor 4 keeps 17.65%</td><td>New pool 2.27M × $0.7234 ≈ $1.65M, an effective pre-money of ≈$22.4M for existing holders.</td></tr>
+   </tbody></table></div>`);
+
+  /* 3 ─ Anti-dilution */
+  h+=L('anti',3,'Anti-dilution protection',
+   `A price-protection clause: if the company later sells shares at a lower price than you paid, your preferred shares convert into more common shares, as if you had paid a somewhat lower price.`,
+   `<div class="tiles">
+     <div class="tile"><h4>What it protects against</h4><p>A <b>${G('down','down round')}</b>, meaning new shares sold <i>cheaper</i> than your price. It does <b>not</b> protect against normal dilution in an up round. If a later round is priced higher, your percentage shrinks and that's fine, because each share is worth more.</p></div>
+     <div class="tile"><h4>The mechanism: the conversion price</h4><p>Preferred converts into common at: <b># common = original $ invested ÷ ${G('cp','conversion price')}</b>. At the start the conversion price equals the purchase price ($1.00), so 1 preferred = 1 common. Anti-dilution <b>lowers the conversion price</b>. No cash changes hands and no new preferred is issued. Each existing preferred share simply converts into more common later.</p></div>
+     <div class="tile"><h4>Who pays for it?</h4><p>The extra common shares come out of <b>everyone who isn't protected</b>: mainly founders and employees (common), and the new investor unless it renegotiates. That's why new investors often require insiders to <b>waive</b> it, which appears to be what happened at Series C.</p></div>
+   </div>
+   <h4 class="mini">The weighted-average formula, in words</h4>
+   <div class="formula">New conversion price = Old price × <span>(A + B)</span> ÷ <span>(A + C)</span></div>
+   <ul class="legend-list">
+     <li><b>A</b> = shares outstanding before the new round (“broad-based” = fully diluted, including options and pool)</li>
+     <li><b>B</b> = shares the new money <i>would</i> have bought at the old price (new $ ÷ old price)</li>
+     <li><b>C</b> = shares <i>actually</i> issued in the new round</li>
+   </ul>
+   <p class="mini-p">In effect it computes a <b>blended average price</b> of the old shares and the cheap new ones. A bigger and cheaper new round moves the price further. A tiny one barely moves it.</p>
+
+   <h4 class="mini">Scenario: dilution is imminent (Company, Inc., late 2006)</h4>
+   <ol class="steps">
+     <li><b>The setup.</b> Investors 1 & 2 hold 11.75M A/B preferred shares bought at <b>$1.00</b>. The company has 18.03M fully diluted shares and is running low on cash.</li>
+     <li><b>The threat.</b> The only offer is Investor 3's: <b>$7.5M at $0.5825</b>, which means issuing 12.88M new shares. That's 42% cheaper than A/B paid.</li>
+     <li><b>Protection kicks in.</b> A = 18.03M, B = $7.5M ÷ $1.00 = 7.5M, C = 12.88M. New conversion price = $1.00 × 25.53 ÷ 30.90 = <b>$0.826</b>.</li>
+     <li><b>The result.</b> Each A/B share now converts into 1 ÷ 0.826 = <b>1.21 common shares</b>, so A/B holders gain ≈<b>2.47M</b> extra common-equivalent shares.</li>
+   </ol>
+   <div class="tbl-wrap"><table class="cmp" style="min-width:560px"><thead><tr><th>Method</th><th>A/B conversion price</th><th>A/B ownership</th><th>Founders</th><th>New C investors</th></tr></thead><tbody>
+     <tr><th>No protection</th><td>$1.00</td><td>38.0%</td><td>4.85%</td><td>41.7%</td></tr>
+     <tr><th>Broad-based weighted average</th><td>$0.826</td><td><b>42.6%</b></td><td>4.49%</td><td>38.6%</td></tr>
+     <tr><th>Full ratchet</th><td>$0.5825</td><td><b>51.3%</b></td><td>3.81%</td><td>32.7%</td></tr>
+   </tbody></table></div>
+   <p class="note">Simplified: the new round is held fixed and the extra shares dilute everyone else. In reality Investor 3 would insist on keeping 20%, pushing the cost onto common, which is one reason the A/B holders appear to have waived the adjustment.</p>
+
+   <div class="calc box" id="calc">
+     <h3>Try it: what if Series C had been priced differently?</h3>
+     <p class="sub">Fixed: 18.03M fully diluted shares before the round, 11.75M A/B shares at $1.00, founders 1.5M.</p>
+     <div class="presets"><button class="chip" data-p="0.5825,7.5">Actual Series C</button><button class="chip" data-p="0.5,0.1">Tiny cheap bridge</button><button class="chip" data-p="0.3,10">Deep down round</button><button class="chip" data-p="1.2,10">Up round</button></div>
+     <div class="sliders">
+       <label>New price per share <output id="o-price"></output><input type="range" id="i-price" min="0.2" max="1.5" step="0.0025"></label>
+       <label>New money raised <output id="o-money"></output><input type="range" id="i-money" min="0.1" max="20" step="0.1"></label>
+     </div>
+     <div id="calc-out"></div>
+   </div>
+
+   <h4 class="mini">Why broad-based weighted average is the market standard</h4>
+   <div class="tiles">
+     <div class="tile"><h4>1 · It's proportional</h4><p>The adjustment scales with <i>how much</i> was sold cheaply and <i>how much</i> cheaper. A ${G('ratchet','full ratchet')} resets to the new low price even if only a handful of shares were sold. Try “Tiny cheap bridge” above: $100k at $0.50 moves weighted average to ≈$0.995 (≈65k extra shares), but a full ratchet drops it to $0.50 and <b>doubles</b> the A/B holders' as-converted stake (+11.75M shares).</p></div>
+     <div class="tile"><h4>2 · It keeps the team motivated</h4><p>A full ratchet pushes almost all of a down round's pain onto common: founders and employees. Those are the people a struggling company most needs to keep (see the C refresh grants).</p></div>
+     <div class="tile"><h4>3 · It keeps the company fundable</h4><p>New investors avoid companies whose old investors will grab a large slice the moment a lower price is set. Harsh ratchets tend to force messy recapitalizations, so the next round becomes harder.</p></div>
+     <div class="tile"><h4>4 · It's the accepted compromise</h4><p>It's the default in the NVCA model documents. Investors still get real protection, and founders accept it as fair. Asking for a full ratchet signals distress or an unusually strong investor. “Broad-based” (counting options and the pool in A) makes the adjustment milder than “narrow-based.”</p></div>
+   </div>`);
+
+  /* 4 ─ Protective provisions */
+  h+=L('protect',4,'Protective provisions (investor vetoes)',
+   `A list of big decisions that need a second “yes” from the preferred shareholders. It is not nine steps every decision goes through; it is nine kinds of decision on which the preferred holders have a veto.`,
+   `<div class="flowv">
+     <div class="fbox">The company wants to do something</div><div class="farr">↓</div>
+     <div class="fbox q">Is it on the protective-provisions list?</div>
+     <div class="fsplit">
+       <div><div class="farr">↓ <b>No</b> (most decisions)</div><div class="fbox ok">Normal process: the CEO or board decides. No investor vote needed.</div></div>
+       <div><div class="farr">↓ <b>Yes</b></div><div class="fbox warn">Needs the board's approval <b>AND</b> a separate vote of the preferred holders. If the preferred says no, it cannot happen, even if the board and the common holders agree.</div></div>
+     </div>
+   </div>
+   <div class="tiles">
+     <div class="tile"><h4>What does “a majority of the preferred” mean?</h4><p>The preferred shareholders vote as their own group, counted <b>by shares, not by people</b>. “Majority” = holders of more than 50% of the preferred shares. In Series A, Investor 1 owns 100% of the preferred, so <b>Investor 1's signature alone is the vote</b>.</p></div>
+     <div class="tile"><h4>Why it matters</h4><p>Board seats can be outvoted; a veto cannot. Even with only half the board (A) or a minority of it (C), investors can block a sale, a new round or a pool increase. Employees feel this when the pool can't grow without investor consent.</p></div>
+   </div>
+   <h4 class="mini">The nine Series A vetoes, in plain English</h4>
+   <div class="tbl-wrap"><table class="cmp" style="min-width:600px"><thead><tr><th>#</th><th>Action that needs the preferred's “yes”</th><th>Real example at Company, Inc.</th></tr></thead><tbody>
+    <tr><th>1</th><td>Sell the company or most of its assets; a merger where owners end up with &lt;50%</td><td>Accepting an acquisition offer</td></tr>
+    <tr><th>2</th><td>Amend the charter or bylaws</td><td>Changing the company's governing rules</td></tr>
+    <tr><th>3</th><td>Change the preferred's rights in a harmful way</td><td>Removing the liquidation preference</td></tr>
+    <tr><th>4</th><td>Increase or decrease the number of authorized preferred shares</td><td>Authorizing new shares for a Series B</td></tr>
+    <tr><th>5</th><td>Issue shares that rank ahead of or equal to Series A</td><td>Doing the Series B round at all</td></tr>
+    <tr><th>6</th><td>Change the number of directors</td><td>Adding a fifth board seat</td></tr>
+    <tr><th>7</th><td>Pay dividends on common stock</td><td>Paying the founders a cash dividend</td></tr>
+    <tr><th>8</th><td>Buy back or redeem shares</td><td>Buying out a departing founder (except buying back unvested shares at cost)</td></tr>
+    <tr><th>9</th><td>Increase or decrease the option pool</td><td>Adding 1.6M shares to hire a CEO</td></tr>
+   </tbody></table></div>
+   <p class="mini-p"><b>Not on the A list</b> (no veto): hiring and firing, budgets, product decisions, contracts, even taking on bank debt. Compare Series D, whose 12 items add debt, any share issuance, related-party deals and contracts above $250k. The investors reach much deeper into operations there.</p>`);
+
+  /* 5 ─ Forced conversion */
+  h+=L('conv',5,'Forced conversion: can Investor 1 make Investor 2 convert?',
+   `Yes, in Series B. Automatic conversion is triggered by holders of 66⅔% of ALL preferred (A and B counted together), and Investor 1 alone holds ≈70%, so it can convert everyone's preferred, Investor 2's included, without Investor 2's consent.`,
+   `<div class="tiles">
+     <div class="tile"><h4>Two ways preferred becomes common</h4><p><b>Voluntary:</b> each holder may convert <i>its own</i> shares at any time, and can never convert anyone else's.<br><b>Automatic:</b> <i>all</i> preferred converts at once if (i) holders of 66⅔% of the preferred, voting together as one class, elect it, or (ii) there's an IPO with ≥$20M net proceeds.</p></div>
+     <div class="tile"><h4>The Series B math</h4><p>Total preferred after the close: 4.58M A + 7.18M B = 11.75M. Investor 1: 4.52M A + 3.75M B = 8.27M = <b>70.4%</b> (above 66⅔%). Investor 2: 3.25M = 27.7%. The A and B votes are <b>pooled</b>, so Investor 1's large Series A holding counts toward the B decision. If the extra $2M “TBD” investor had joined, Investor 1 would have had ≈61% and needed a partner.</p></div>
+     <div class="tile"><h4>What Investor 2 would lose</h4><p>Converting to common wipes out the 1× liquidation preference and participation, anti-dilution, and the preferred vetoes. Investor 2's main comfort: Investor 1 would lose all the same rights on its own (larger) stake, so it's unlikely to do this casually. The B term sheet gives Series B <b>no separate class vote</b>. Compare Series C, where the new investor demanded a 90% vote for anything that hurts Series C alone.</p></div>
+   </div>
+   <h4 class="mini">Who can reach the vote in each round? (applies to conversion and protective provisions)</h4>
+   <div class="tbl-wrap"><table class="cmp" style="min-width:600px"><thead><tr><th>Round</th><th>Threshold</th><th>Share of the preferred</th><th>What it takes</th></tr></thead><tbody>
+    <tr><th>A</th><td>Majority</td><td>Investor 1 100%</td><td><b>Investor 1 alone</b></td></tr>
+    <tr><th>B</th><td>66⅔%</td><td>Investor 1 70.4% · Investor 2 27.7%</td><td><b>Investor 1 alone</b>, so it can force Investor 2</td></tr>
+    <tr><th>C</th><td>70%</td><td>Investor 1 53.1% · Investor 3 25.1% · Investor 2 20.9%</td><td>Investor 1 + either Investor 2 or Investor 3. Investor 1 can also block alone</td></tr>
+    <tr><th>D</th><td>66⅔%</td><td>Investor 1 41.7% · Investor 4 21.6% · Investor 3 19.7% · Investor 2 16.4%</td><td>Investor 1 + any <b>two</b> others. Without Investor 1 the others reach only 57.7%, so Investor 1 can block alone</td></tr>
+   </tbody></table></div>`);
+
+  /* 6 ─ ROFR & co-sale */
+  h+=L('rofr',6,'Right of first refusal & co-sale',
+   `Both rights switch on only when a founder wants to SELL their own shares to an outside buyer. The right of first refusal lets the company and then the investors buy those shares first; co-sale lets the investors sell some of their own shares to that same buyer alongside the founder.`,
+   `<div class="callout"><b>Clearing up a common mix-up:</b> if a founder receives an offer and <b>declines it</b>, nothing happens. No shares move, so neither right is triggered, and investors do <b>not</b> get a right to sell their portion. These rights don't let investors sell whenever they want. They exist so investors can <i>respond</i> when a founder chooses to sell.</div>
+   <div class="tiles">
+     <div class="tile"><h4>${G('rofr','ROFR')} = a right to BUY first</h4><p>Before the founder can sell to Buyer X, the company and then the preferred holders (pro rata) can buy those same shares at the same price and terms.</p></div>
+     <div class="tile"><h4>${G('cosale','Co-sale')} = a right to SELL alongside</h4><p>If nobody uses the ROFR and the founder goes ahead with Buyer X, investors may sell a proportional part of <i>their</i> shares to X on the same terms. The founder then sells fewer.</p></div>
+   </div>
+   <h4 class="mini">Worked example (Series A)</h4>
+   <ol class="steps">
+     <li><b>Founder 1</b> (900k shares) agrees to sell <b>100k shares to Buyer X at $2.00</b> and must notify the company and investors.</li>
+     <li><b>Company ROFR:</b> the company may buy the 100k at $2.00 itself.</li>
+     <li><b>Investor ROFR:</b> if the company passes, the preferred holders (here Investor 1) may buy them instead, pro rata.</li>
+     <li><b>Co-sale:</b> if nobody buys, Founder 1 may sell to X, but Investor 1 can tag along. A typical formula splits by holdings: Investor 1 has 1.5M vs. Founder 1's 0.9M, so Investor 1 sells 62,500 and Founder 1 only 37,500. Buyer X still gets 100k.</li>
+   </ol>
+   <p class="note">The exact co-sale formula sits in the definitive agreement. The proportional split shown is the common approach.</p>
+   <div class="tbl-wrap"><table class="cmp" style="min-width:520px"><thead><tr><th>Situation</th><th>ROFR?</th><th>Co-sale?</th></tr></thead><tbody>
+    <tr><th>Founder declines an offer</th><td>No</td><td>No: nothing is sold</td></tr>
+    <tr><th>Founder sells to an outsider</th><td>Yes: company first, then investors</td><td>Yes, if ROFR isn't used</td></tr>
+    <tr><th>Investor sells its own shares</th><td colspan="2">Not covered by these clauses (they restrict founders and officers)</td></tr>
+    <tr><th>Founder moves shares to a family trust</th><td colspan="2">Exempt (estate planning)</td></tr>
+    <tr><th>Founder sells up to 1% of their stock</th><td colspan="2">Exempt (the A/B carve-out)</td></tr>
+    <tr><th>IPO or acquisition</th><td colspan="2">Both rights end</td></tr>
+   </tbody></table></div>`);
+
+  /* 7 ─ Registration & piggyback */
+  h+=L('reg',7,'Registration rights, piggyback, and what “long shelf” likely means',
+   `Shares bought privately can't be sold to the public until they are registered with the SEC. Registration rights oblige the company to do that paperwork, and a piggyback right lets investors add their shares to a registration the company is already doing.`,
+   `<div class="tiles">
+     <div class="tile"><h4>Why investors need this</h4><p>VC shares are “restricted securities.” To sell them on the public market after an IPO they need either an SEC registration or an exemption such as ${G('r144','Rule 144')}. Registration is expensive and controlled by the company, so investors get these rights in writing.</p></div>
+     <div class="tile"><h4>Piggyback, step by step</h4><p>1. The company decides to register shares <i>for its own reasons</i>, for example a follow-on offering two years after the IPO.<br>2. It must notify the registration-rights holders.<br>3. Holders choose how many of their shares to add.<br>4. The underwriter may <b>cut back</b> the extra shares if the market can't absorb them, pro rata among holders.<br>5. The company pays the costs (except underwriting discounts).</p></div>
+     <div class="tile"><h4>The cutback in numbers</h4><p>The company sells 5M new shares and investors ask to add 4M. The underwriter says the market can take only 6M in total. Under A/B, investors can't be cut below <b>30% of the offering</b>: at least 1.8M of the 6M. In the <b>IPO</b> they can be cut to <b>zero</b>, because insiders selling at the IPO looks bad and the IPO is meant to raise money for the company.</p></div>
+     <div class="tile"><h4>Why it matters</h4><p>It's the cheapest route to liquidity: a free ride on the company's offering, with an underwriter's support, without using up one of the scarce <b>demand</b> rights (only 3 in A/B). It's also unlimited.</p></div>
+   </div>
+   <div class="tbl-wrap"><table class="cmp" style="min-width:600px"><thead><tr><th>Type</th><th>Who starts it</th><th>Series A/B terms</th></tr></thead><tbody>
+    <tr><th>${G('demand','Demand')}</th><td>Investors force the company to register</td><td>3 demands, ≥$5M each, from the earlier of 3 years after close or 6 months after the IPO</td></tr>
+    <tr><th>${G('piggy','Piggyback')}</th><td>The company is already registering, and investors join</td><td>Unlimited; cutback to no less than 30% (to zero in the IPO)</td></tr>
+    <tr><th>${G('s3','Form S-3')}</th><td>Investors, once the company is public and S-3-eligible</td><td>Unlimited, max 2 per year, ≥$1M each</td></tr>
+   </tbody></table></div>
+   <div class="callout"><b>“Long shelf” in Series B:</b> that phrase doesn't appear in any of the four term sheets so it probably came from a lecture or slide. It most likely refers to one of these:
+     <ul><li><b>Long-form vs. short-form registration.</b> Form S-1 is the full “long form” used for the IPO and early demands. Form S-3 is the “short form” available to established public companies, cheaper and faster. Series B grants unlimited S-3 registrations (max 2 per year, ≥$1M).</li>
+     <li><b>Shelf registration (SEC Rule 415).</b> The company registers shares once and holders sell them “off the shelf” over time instead of all at once. Shelf registrations are typically filed on Form S-3, so B's S-3 right is the closest thing to a shelf in these documents.</li></ul>
+     Confirm which one your instructor means.</div>`);
+
+  p.innerHTML=h;
+  p.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>document.getElementById('L-'+b.dataset.jump).scrollIntoView({behavior:'smooth'}));
+  return p;
+}
+
+function renderOwn(r){
+  const d=ROUNDS[r];
+  document.querySelectorAll('#own-seg button').forEach(b=>b.setAttribute('aria-selected',b.dataset.r===r));
+  const fmt=n=>n.toLocaleString('en-US');
+  let bar=d.rows.map(x=>`<span style="width:${x[2]}%;background:${GC[x[3]]}" data-tip="<div class='k'>${x[0]}</div>${x[2].toFixed(2)}%"></span>`).join('');
+  const total=d.rows.reduce((a,x)=>a+x[1],0), pct=d.rows.reduce((a,x)=>a+x[2],0);
+  document.getElementById('own-out').innerHTML=`
+   <div class="fgrid">${d.f.map(x=>`<div class="frow"><span class="fl">${x[0]}</span><span class="fm">${x[1]}</span><b class="fr">${x[2]}</b></div>`).join('')}</div>
+   <div class="bar100">${bar}</div>
+   <div class="lg">${GROUPS.map((g,i)=>d.rows.some(x=>x[3]===i)?`<span><i style="background:${GC[i]}"></i>${g}</span>`:'').join('')}</div>
+   <table class="num" style="margin-top:10px"><thead><tr><th>Holder after Series ${r}</th><th>Shares (fully diluted)</th><th>% of company</th></tr></thead><tbody>
+   ${d.rows.map(x=>`<tr><td><i class="sw" style="background:${GC[x[3]]}"></i>${x[0]}</td><td>${fmt(x[1])}</td><td>${x[2].toFixed(2)}%</td></tr>`).join('')}
+   <tr class="tot"><td>Total</td><td>${fmt(total)}</td><td>${pct.toFixed(1)}%</td></tr></tbody></table>
+   <p class="note">${d.note}</p>`;
+  bindTips(document.getElementById('own-out'));
+}
+
+function renderCalc(){
+  const price=+document.getElementById('i-price').value, money=+document.getElementById('i-money').value*1e6;
+  document.getElementById('o-price').textContent="$"+price.toFixed(4);
+  document.getElementById('o-money').textContent='$'+(money/1e6).toFixed(1)+'M';
+  const pre=18025361, AB=11750861, F=1.5e6, cp1=1, nw=money/price;
+  const res=[['No protection',cp1],['Weighted average',price<cp1?cp1*(pre+money/cp1)/(pre+nw):cp1],['Full ratchet',Math.min(cp1,price)]].map(([n,cp])=>{
+    const extra=AB/cp-AB, tot=pre+nw+extra; return {n,cp,extra,ab:(AB+extra)/tot*100,f:F/tot*100,nw:nw/tot*100};});
+  const fmt=n=>Math.round(n).toLocaleString('en-US');
+  const msg=price>=cp1?`<div class="callout ok">The new price is <b>at or above $1.00</b>, so anti-dilution does <b>not</b> kick in. Everyone is diluted in % terms, but each share is worth the same or more.</div>`:'';
+  document.getElementById('calc-out').innerHTML=`${msg}
+   <p class="mini-p">New shares issued: <b>${fmt(nw)}</b></p>
+   <div class="tbl-wrap"><table class="cmp" style="min-width:560px"><thead><tr><th>Method</th><th>Conversion price</th><th>Extra A/B shares</th><th>A/B ownership</th><th>Founders</th><th>New investors</th></tr></thead><tbody>
+   ${res.map(r=>`<tr><th>${r.n}</th><td>$${r.cp.toFixed(4)}</td><td>${r.extra>0.5?'+'+fmt(r.extra):'—'}</td><td><div class="mbar"><i style="width:${r.ab}%"></i></div>${r.ab.toFixed(1)}%</td><td>${r.f.toFixed(2)}%</td><td>${r.nw.toFixed(1)}%</td></tr>`).join('')}
+   </tbody></table></div>`;
+}
+function setCalc(p,m){document.getElementById('i-price').value=p;document.getElementById('i-money').value=m;renderCalc()}
+
+/* ---------------- Payouts vs exit ---------------- */
+const $M=v=>{const a=Math.abs(v);let s=a>=100?a.toFixed(0):a>=10?a.toFixed(1):a.toFixed(2);if(s.includes('.'))s=s.replace(/\.?0+$/,'');return (v<0?'−':'')+'$'+s+'M'};
+const PV={
+ debt:{name:"Debt (no interest)",tag:"Fixed claim",
+   how:p=>`Gets its ${$M(p.I)} back before any equity holder, and never a dollar more.`,
+   fav:"Downside protection only, with no upside. Good for the investor in a weak exit, bad in a great one.",
+   pay:(x,p)=>Math.min(x,p.I),
+   bends:p=>[{x:p.I,y:p.I,t:"Repaid in full",w:`Above a ${$M(p.I)} exit the line goes flat: debt has no upside.`}]},
+ common:{name:"Common stock",tag:"Pure ownership",
+   how:p=>`Owns ${(p.f*100).toFixed(1)}% and gets exactly that share of every exit, from the first dollar.`,
+   fav:"Full upside but no protection. In a small exit the investor loses money alongside everyone else.",
+   pay:(x,p)=>p.f*x,
+   bends:p=>[]},
+ conv:{name:"Convertible preferred (1×)",tag:"Money back OR convert",
+   how:p=>`Chooses the better of two: its ${$M(p.I)} back, OR ${(p.f*100).toFixed(1)}% of the exit as common.`,
+   fav:"The VC standard. Protected on the downside, same upside as common in a big exit.",
+   pay:(x,p)=>Math.max(Math.min(x,p.I),p.f*x),
+   bends:p=>[{x:p.I,y:p.I,t:"Preference fully paid",w:`Up to ${$M(p.I)} the investor takes every dollar, a 1:1 line.`},
+     {x:p.I/p.f,y:p.I,t:"Converts to common",w:`Above ${$M(p.I/p.f)}, ${(p.f*100).toFixed(1)}% of the exit beats the ${$M(p.I)} preference, so it converts and rides the common line.`}]},
+ safe:{name:"SAFE with a valuation cap",tag:"Money back OR convert at the cap",
+   how:p=>`If the company is sold before a priced round, gets the better of its ${$M(p.I)} back or converting at the ${$M(p.C)} cap, which buys only ${(p.s*100).toFixed(1)}%.`,
+   fav:"Cheap and fast to sign, with no board seat or information rights. The cap sets the conversion price: a cap above the priced-round valuation buys a smaller stake, so the upside line is flatter.",
+   pay:(x,p)=>Math.max(Math.min(x,p.I),p.s*x),
+   bends:p=>[{x:p.I,y:p.I,t:"Purchase amount returned",w:`Up to ${$M(p.I)} the SAFE takes every dollar.`},
+     {x:p.I/p.s,y:p.I,t:"Converts at the cap",w:`Above ${$M(p.I/p.s)}, the ${(p.s*100).toFixed(1)}% stake beats getting the money back. The line is flatter than common because the cap sets a higher price per share.`}]},
+ part:{name:"Participating preferred",tag:"Money back AND a share",
+   how:p=>`Takes its ${$M(p.I)} back first, AND then ${(p.f*100).toFixed(1)}% of everything left. It never needs to convert.`,
+   fav:"The most investor-friendly vehicle. Always above the common line, so founders pay for it at every exit.",
+   pay:(x,p)=>x<=p.I?x:p.I+p.f*(x-p.I),
+   bends:p=>[{x:p.I,y:p.I,t:"Preference paid, then participates",w:`After its ${$M(p.I)} comes back, it keeps ${(p.f*100).toFixed(1)}% of every extra dollar: a line parallel to common, shifted up by about ${$M(p.I*(1-p.f))}.`}]},
+ partcap:{name:"Participating, capped",tag:"AND, until the cap",
+   how:p=>`Money back AND a share of the rest, but only until its total reaches ${p.K}× (${$M(p.K*p.I)}). Above that it can convert to plain common.`,
+   fav:"A compromise: investor-friendly in mid-size exits, the same as common in big ones.",
+   pay:(x,p)=>Math.max(x<=p.I?x:Math.min(p.I+p.f*(x-p.I),p.K*p.I),p.f*x),
+   bends:p=>[{x:p.I,y:p.I,t:"Preference paid",w:`Up to ${$M(p.I)} it takes every dollar.`},
+     {x:p.I+(p.K-1)*p.I/p.f,y:p.K*p.I,t:`Hits the ${p.K}× cap`,w:`At ${$M(p.I+(p.K-1)*p.I/p.f)} its total reaches ${$M(p.K*p.I)} and the line goes flat. This flat stretch is the “dead zone,” where extra exit value all goes to common.`},
+     {x:p.K*p.I/p.f,y:p.K*p.I,t:"Converts to common",w:`Above ${$M(p.K*p.I/p.f)}, ${(p.f*100).toFixed(1)}% of the exit beats the capped ${$M(p.K*p.I)}, so it converts.`}]},
+ convM:{name:"Convertible preferred, multiple pref.",tag:"N× back OR convert",
+   how:p=>`Takes ${p.M}× its money (${$M(p.M*p.I)}) back first, OR converts to ${(p.f*100).toFixed(1)}% common, whichever is more.`,
+   fav:"Heavy downside protection. Common gets nothing until the multiple is paid, a typical term in tough markets.",
+   pay:(x,p)=>Math.max(Math.min(x,p.M*p.I),p.f*x),
+   bends:p=>[{x:p.M*p.I,y:p.M*p.I,t:`Full ${p.M}× preference paid`,w:`Up to ${$M(p.M*p.I)} the investor takes every dollar. Common gets $0.`},
+     {x:p.M*p.I/p.f,y:p.M*p.I,t:"Converts to common",w:`Above ${$M(p.M*p.I/p.f)}, ${(p.f*100).toFixed(1)}% of the exit beats ${$M(p.M*p.I)}, so it converts.`}]},
+};
+const PKEYS=Object.keys(PV);
+const PDEF={I:10,P:10,M:2,K:2,C:20};
+let PS={...PDEF,a:'conv',b:'partcap',hx:null};
+function pParams(){const f=PS.I/(PS.P+PS.I);return {I:PS.I,P:PS.P,M:PS.M,K:PS.K,C:PS.C,f,s:PS.I/(PS.C+PS.I)}}
+function niceMax(v){const steps=[10,20,25,40,50,60,80,100,120,150,200,250,300,400,500];return steps.find(s=>s>=v)||Math.ceil(v/100)*100}
+
+function payPanel(){
+  const p=document.createElement('section');p.className='panel';p.id='p-pay';p.style.setProperty('--acc','var(--teal)');
+  const sl=(id,label,min,max,step,unit)=>`<label for="ps-${id}">${label} <output id="po-${id}"></output><input type="range" id="ps-${id}" min="${min}" max="${max}" step="${step}" data-k="${id}" data-u="${unit}"></label>`;
+  p.innerHTML=`<div class="hero" style="grid-template-columns:1fr;border-bottom-color:var(--teal)">
+   <div><h2>Payouts vs exit <span class="pill acc" style="--acc:var(--teal)">Interactive</span></h2>
+   <p class="lede">The classic payout-versus-exit chart, made interactive. The x-axis is what the company sells for and the y-axis is what the investor walks away with. The vehicle decides the shape of the line. It opens on the slides' setup ($10M invested at a $10M pre-money, so 50% ownership). All numbers are illustrative.</p></div></div>
+
+  <div class="sec"><div class="sec-h"><div class="n">1</div><div><h3>Compare two vehicles</h3><small>Same money, same ownership, different contract</small></div></div>
+   <div class="box">
+    <div class="vpick"><span class="vlab"><i style="background:var(--c1)"></i>Vehicle A</span><div class="vchips" id="va">${PKEYS.map(k=>`<button class="chip" data-v="${k}">${PV[k].name}</button>`).join('')}</div></div>
+    <div class="vpick"><span class="vlab"><i style="background:var(--c4)"></i>Vehicle B</span><div class="vchips" id="vb">${PKEYS.map(k=>`<button class="chip" data-v="${k}">${PV[k].name}</button>`).join('')}<button class="chip" data-v="">None</button></div></div>
+    <details class="knobs" open><summary>Deal terms <span id="own-line" class="fav"></span></summary>
+     <div class="sliders s5">
+      ${sl('I','Investment',1,30,0.5,'M')}${sl('P','Pre-money',2,60,1,'M')}${sl('M','Liquidation multiple',1,3,0.5,'x')}${sl('K','Participation cap',1.5,4,0.5,'x')}${sl('C','SAFE cap',5,80,1,'M')}
+     </div>
+     <button class="btn-ghost" id="p-reset">Reset to the slides' setup</button>
+    </details>
+    <div class="paywrap">
+     <div class="chart" id="pay-ch"></div>
+     <div class="readout" id="pay-ro"></div>
+    </div>
+    <div class="lg" id="pay-lg"></div>
+    <p class="note">Hover or drag across the chart to read any exit value. The dashed diagonal is the total payout line (payout = exit): no investor can get more than the whole company. The SAFE assumes a pre-money cap, so stake = investment ÷ (cap + investment).</p>
+   </div>
+   <div class="two" id="pay-cards" style="margin-top:14px"></div>
+  </div>
+
+  <div class="sec"><div class="sec-h"><div class="n">2</div><div><h3>Multiple instruments, multiple rounds</h3><small>The p. 37 example: who gets each dollar as the exit grows</small></div></div>
+   <div class="box">
+    <p class="sub" style="margin-top:0">Common 1M shares · Series A $1M at $2/share (non-participating, 500k shares) · Series B $2M at $4/share (participating, senior to A, 500k shares) · $1M debt</p>
+    <div class="paywrap"><div class="chart" id="mr-ch"></div><div class="readout" id="mr-ro"></div></div>
+    <div class="lg" id="mr-lg"></div>
+    <ol class="steps" style="margin-top:12px">
+     <li><b>$0–1M:</b> all to the lender. Debt is paid before any stock.</li>
+     <li><b>$1–3M:</b> all to Series B, which is senior and takes its $2M preference.</li>
+     <li><b>$3–4M:</b> all to Series A, which takes its $1M preference.</li>
+     <li><b>$4–7M:</b> common and Series B split what's left 2:1 (B participates). Series A stays at $1M.</li>
+     <li><b>Above $7M:</b> Series A converts, because 25% of what's left after debt and B's preference now beats $1M. Each extra dollar is then split by shares: common 50%, A 25%, B 25%.</li>
+    </ol>
+   </div>
+  </div>
+
+  <div class="sec"><div class="sec-h"><div class="n">3</div><div><h3>Company, Inc. after Series D</h3><small>The real stack: D senior 1×, then A/B/C 1× pari passu, all participating up to 2×</small></div></div>
+   <div class="box">
+    <div class="paywrap"><div class="chart" id="ci-ch"></div><div class="readout" id="ci-ro"></div></div>
+    <div class="lg" id="ci-lg"></div>
+    <div class="tiles" id="ci-notes"></div>
+    <p class="note">Simplified: options and the pool are treated as exercised common (strike prices ignored), and dividends are ignored. Each series converts only when that pays it more than its capped participating amount. ${I}</p>
+   </div>
+  </div>`;
+  return p;
+}
+
+/* generic line chart with crosshair */
+function drawPay(){
+  const p=pParams();
+  const all=PKEYS.flatMap(k=>PV[k].bends(p).map(b=>b.x));
+  const xmax=niceMax(Math.max(...all,(p.P+p.I)*2)*1.2);
+  const W=720,H=420,L=56,R=16,T=16,B=40,iw=W-L-R,ih=H-T-B;
+  const X=v=>L+v/xmax*iw, Y=v=>T+ih-v/xmax*ih;
+  const sel=[[PS.a,'var(--c1)'],[PS.b,'var(--c4)']].filter(s=>s[0]);
+  const step=xmax<=50?10:xmax<=100?20:50;
+  let s=`<svg viewBox="0 0 ${W} ${H}" id="pay-svg" role="img" aria-label="Investor payout versus exit value"><defs><clipPath id="pclip"><rect x="${L}" y="${T}" width="${iw}" height="${ih}"/></clipPath></defs>`;
+  for(let v=0;v<=xmax;v+=step){s+=`<line x1="${X(v)}" x2="${X(v)}" y1="${T}" y2="${T+ih}" stroke="var(--line)"/><line x1="${L}" x2="${L+iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${X(v)}" y="${H-22}" text-anchor="middle" font-size="11.5" fill="var(--ink-3)" font-weight="700">${$M(v)}</text><text x="${L-8}" y="${Y(v)+4}" text-anchor="end" font-size="11.5" fill="var(--ink-3)" font-weight="700">${$M(v)}</text>`}
+  s+=`<text x="${L+iw/2}" y="${H-4}" text-anchor="middle" font-size="12" font-weight="900" fill="var(--ink-2)">Exit value (what the company sells for)</text>`;
+  s+=`<text transform="translate(13 ${T+ih/2}) rotate(-90)" text-anchor="middle" font-size="12" font-weight="900" fill="var(--ink-2)">Investor payout</text>`;
+  s+=`<line x1="${X(0)}" y1="${Y(0)}" x2="${X(xmax)}" y2="${Y(xmax)}" stroke="var(--ink-3)" stroke-width="1.5" stroke-dasharray="5 5"/><text x="${X(xmax*0.8)-6}" y="${Y(xmax*0.8)-8}" text-anchor="end" font-size="11.5" font-weight="800" fill="var(--ink-3)">Total payout line</text>`;
+  sel.forEach(([k,c],i)=>{
+    let d='';for(let j=0;j<=480;j++){const x=xmax*j/480;d+=(j?'L':'M')+X(x).toFixed(1)+','+Y(PV[k].pay(x,p)).toFixed(1)}
+    s+=`<path d="${d}" fill="none" stroke="${c}" stroke-width="${i?2.5:3}" ${i?'stroke-dasharray="9 5"':''} stroke-linejoin="round" clip-path="url(#pclip)"/>`;
+  });
+  sel.forEach(([k,c],i)=>PV[k].bends(p).forEach((b,j)=>{if(b.x<=xmax)s+=`<g data-tip="<div class='k'>${PV[k].name}</div><b>${b.t}</b><br>${b.w}"><circle cx="${X(b.x)}" cy="${Y(b.y)}" r="11" fill="transparent"/><circle cx="${X(b.x)}" cy="${Y(b.y)}" r="6" fill="${c}" stroke="var(--surface)" stroke-width="2"/><text x="${X(b.x)}" y="${i?Y(b.y)+22:Y(b.y)-12}" text-anchor="middle" font-size="11" font-weight="900" fill="var(--ink)">${i?'B':'A'}${j+1}</text></g>`}));
+  s+=`<g id="pay-x" pointer-events="none"><line y1="${T}" y2="${T+ih}" stroke="var(--ink)" stroke-width="1"/>${sel.map(([k,c])=>`<circle r="5" fill="${c}" stroke="var(--surface)" stroke-width="2" data-k="${k}"/>`).join('')}</g>`;
+  s+=`<rect x="${L}" y="${T}" width="${iw}" height="${ih}" fill="transparent" id="pay-hit" style="cursor:crosshair"/></svg>`;
+  const el=document.getElementById('pay-ch');el.innerHTML=s;bindTips(el);
+  const hx=PS.hx??Math.min(xmax*0.6,Math.round(p.K*p.I/p.f*0.8));
+  const move=x=>{x=Math.max(0,Math.min(xmax,x));const g=document.getElementById('pay-x');g.querySelector('line').setAttribute('x1',X(x));g.querySelector('line').setAttribute('x2',X(x));
+    g.querySelectorAll('circle').forEach(c=>{c.setAttribute('cx',X(x));c.setAttribute('cy',Y(PV[c.dataset.k].pay(x,p)))});readPay(x,p)};
+  const hit=document.getElementById('pay-hit');
+  const toX=e=>{const r=hit.getBoundingClientRect();return (e.clientX-r.left)/r.width*xmax};
+  hit.addEventListener('pointermove',e=>{PS.hx=toX(e);move(PS.hx)});
+  hit.addEventListener('pointerdown',e=>{PS.hx=toX(e);move(PS.hx)});
+  move(hx);
+  document.getElementById('pay-lg').innerHTML=sel.map(([k,c],i)=>`<span><i style="background:${c}"></i>${i?'B':'A'} · ${PV[k].name}</span>`).join('')+`<span><i style="background:var(--ink-3)"></i>Total payout line</span>`;
+  document.getElementById('own-line').textContent=`· investor owns ${(p.f*100).toFixed(1)}% · SAFE stake ${(p.s*100).toFixed(1)}%`;
+  document.getElementById('pay-cards').innerHTML=sel.map(([k,c],i)=>{const v=PV[k];const bs=v.bends(p);
+    return `<div class="box vcard" style="border-top:6px solid ${c}"><h3>${i?'B':'A'} · ${v.name}</h3><p class="sub">${v.tag}</p><p>${v.how(p)}</p>
+     ${bs.length?`<ul class="bends">${bs.map((b,j)=>`<li><span class="bn" style="background:${c}">${i?'B':'A'}${j+1}</span><b>${b.t} at ${$M(b.x)}.</b> ${b.w}</li>`).join('')}</ul>`:`<p class="mini-p">No bends: a straight line from zero.</p>`}
+     <div class="why"><b>Who it suits:</b> ${v.fav}</div></div>`}).join('');
+}
+function readPay(x,p){
+  const sel=[[PS.a,'var(--c1)','A'],[PS.b,'var(--c4)','B']].filter(s=>s[0]);
+  const vals=sel.map(([k])=>PV[k].pay(x,p));
+  let h=`<div class="ro-x"><span>Exit value</span><b>${$M(x)}</b></div>`;
+  sel.forEach(([k,c,l],i)=>{h+=`<div class="ro-row"><i style="background:${c}"></i><div><span>${l} · ${PV[k].name}</span><b>${$M(vals[i])}</b><small>${x>0?(vals[i]/x*100).toFixed(1):'0'}% of exit · ${(vals[i]/p.I).toFixed(2)}× money</small></div></div>`});
+  if(vals.length===2){const d=vals[0]-vals[1];h+=`<div class="ro-diff">${Math.abs(d)<0.005?'Both pay the same here':`<b>${d>0?'A':'B'}</b> pays the investor <b>${$M(Math.abs(d))}</b> more. That money comes out of the founders' pocket.`}</div>`}
+  h+=`<div class="ro-com"><span>Founders / common get</span><b>${sel.map(([k],i)=>`${sel[i][2]}: ${$M(x-vals[i])}`).join(' · ')}</b></div>`;
+  document.getElementById('pay-ro').innerHTML=h;
+}
+
+/* stacked area with crosshair */
+function stackChart(id,xmax,step,fn,series,readout){
+  const W=720,H=360,L=56,R=16,T=12,B=40,iw=W-L-R,ih=H-T-B;
+  const X=v=>L+v/xmax*iw, Y=v=>T+ih-v/xmax*ih, N=300;
+  const pts=[];for(let j=0;j<=N;j++){const x=xmax*j/N;pts.push([x,fn(x)])}
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Payout by holder versus exit value">`;
+  for(let v=0;v<=xmax+1e-9;v+=step){s+=`<line x1="${X(v)}" x2="${X(v)}" y1="${T}" y2="${T+ih}" stroke="var(--line)"/><line x1="${L}" x2="${L+iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${X(v)}" y="${H-22}" text-anchor="middle" font-size="11.5" fill="var(--ink-3)" font-weight="700">${$M(v)}</text><text x="${L-8}" y="${Y(v)+4}" text-anchor="end" font-size="11.5" fill="var(--ink-3)" font-weight="700">${$M(v)}</text>`}
+  s+=`<text x="${L+iw/2}" y="${H-4}" text-anchor="middle" font-size="12" font-weight="900" fill="var(--ink-2)">Exit value</text>`;
+  const cum=pts.map(()=>0);
+  series.forEach((sr,si)=>{
+    let top='',bot='';
+    pts.forEach(([x,v],j)=>{const y0=cum[j],y1=y0+v[si];top+=(j?'L':'M')+X(x).toFixed(1)+','+Y(y1).toFixed(1);cum[j]=y1});
+    for(let j=N;j>=0;j--){bot+='L'+X(pts[j][0]).toFixed(1)+','+Y(cum[j]-pts[j][1][si]).toFixed(1)}
+    s+=`<path d="${top}${bot}Z" fill="${sr[1]}" stroke="var(--surface)" stroke-width="1"/>`;
+  });
+  s+=`<g class="xh" pointer-events="none"><line y1="${T}" y2="${T+ih}" stroke="var(--ink)" stroke-width="1"/></g><rect class="hit" x="${L}" y="${T}" width="${iw}" height="${ih}" fill="transparent" style="cursor:crosshair"/></svg>`;
+  const el=document.getElementById(id);el.innerHTML=s;
+  const ln=el.querySelector('.xh line'),hit=el.querySelector('.hit');
+  const move=x=>{x=Math.max(0,Math.min(xmax,x));ln.setAttribute('x1',X(x));ln.setAttribute('x2',X(x));readout(x,fn(x))};
+  const toX=e=>{const r=hit.getBoundingClientRect();return (e.clientX-r.left)/r.width*xmax};
+  hit.addEventListener('pointermove',e=>move(toX(e)));hit.addEventListener('pointerdown',e=>move(toX(e)));
+  return move;
+}
+function stackReadout(roId,series,extra){return (x,v)=>{
+  let h=`<div class="ro-x"><span>Exit value</span><b>${$M(x)}</b></div>`;
+  series.slice().reverse().forEach(sr=>{const i=series.indexOf(sr);h+=`<div class="ro-row"><i style="background:${sr[1]}"></i><div><span>${sr[0]}</span><b>${$M(v[i])}</b><small>${x>0?(v[i]/x*100).toFixed(1):'0'}% of exit</small></div></div>`});
+  if(extra)h+=extra(x);
+  document.getElementById(roId).innerHTML=h;}}
+
+/* p.37 multi-round example ($M) */
+function mrPay(X){
+  const debt=Math.min(X,1);let r=X-debt;
+  const bP=Math.min(r,2);r-=bP;
+  const asPref=()=>{const aP=Math.min(r,1),rest=r-aP;return {a:aP,b:bP+rest*0.5/1.5,c:rest/1.5}};
+  const asConv=()=>({a:r*0.25,b:bP+r*0.25,c:r*0.5});
+  const o=asConv().a>asPref().a?asConv():asPref();
+  return [o.c,o.a,o.b,debt];
+}
+/* Company, Inc. after D (dollars) */
+const CIH={D:{sh:13823229,pref:10e6,cap:20e6},A:{sh:4575861,pref:4575861,cap:9151722},B:{sh:7175000,pref:7175000,cap:14350000},C:{sh:12875536,pref:7.5e6,cap:15e6},Com:{sh:8549379}};
+function ciWater(X,conv){
+  const pay={D:0,A:0,B:0,C:0,Com:0};let rem=X;
+  if(!conv.D){const v=Math.min(rem,CIH.D.pref);pay.D=v;rem-=v}
+  const jr=['A','B','C'].filter(k=>!conv[k]);const tot=jr.reduce((a,k)=>a+CIH[k].pref,0);
+  if(tot>0){const v=Math.min(rem,tot);jr.forEach(k=>pay[k]+=v*CIH[k].pref/tot);rem-=v}
+  let act=['D','A','B','C','Com'];
+  for(let it=0;it<6&&rem>1e-6;it++){
+    const pool=act.reduce((a,k)=>a+CIH[k].sh,0);let capped=null,scale=Infinity;
+    // the holder that reaches its 2x cap first, if any
+    for(const k of act){if(k==='Com'||conv[k])continue;const t=(CIH[k].cap-pay[k])*pool/CIH[k].sh;if(t<scale){scale=t;capped=k}}
+    if(!capped||scale>=rem){act.forEach(k=>pay[k]+=rem*CIH[k].sh/pool);rem=0;break}
+    act.forEach(k=>pay[k]+=scale*CIH[k].sh/pool);rem-=scale;act=act.filter(k=>k!==capped);
+  }
+  return pay;
+}
+function ciEq(X){
+  const conv={D:false,A:false,B:false,C:false};
+  for(let it=0;it<8;it++){let ch=false;
+    for(const k of ['D','A','B','C']){const a=ciWater(X,{...conv,[k]:false})[k],b=ciWater(X,{...conv,[k]:true})[k];const want=b>a+1;if(want!==conv[k]){conv[k]=want;ch=true}}
+    if(!ch)break}
+  return {pay:ciWater(X,conv),conv};
+}
+function bootPay(){
+  document.querySelectorAll('#p-pay input[type=range]').forEach(i=>{i.value=PS[i.dataset.k];
+    const upd=()=>{document.getElementById('po-'+i.dataset.k).textContent=i.dataset.u==='x'?(+i.value)+'×':'$'+(+i.value)+'M'};upd();
+    i.oninput=()=>{PS[i.dataset.k]=+i.value;PS.hx=null;upd();drawPay()}});
+  const mark=()=>{['va','vb'].forEach(g=>document.querySelectorAll('#'+g+' .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.v===(g==='va'?PS.a:PS.b))))};
+  document.querySelectorAll('#va .chip').forEach(c=>c.onclick=()=>{PS.a=c.dataset.v;mark();drawPay()});
+  document.querySelectorAll('#vb .chip').forEach(c=>c.onclick=()=>{PS.b=c.dataset.v;mark();drawPay()});
+  document.getElementById('p-reset').onclick=()=>{Object.assign(PS,PDEF,{hx:null});document.querySelectorAll('#p-pay input[type=range]').forEach(i=>{i.value=PS[i.dataset.k];i.oninput()})};
+  mark();drawPay();
+
+  const mrS=[["Common (1M sh)","var(--c1)"],["Series A (non-participating)","var(--c2)"],["Series B (participating, senior)","var(--c3)"],["Debt $1M","var(--c4)"]];
+  const mv=stackChart('mr-ch',10,2,mrPay,mrS,stackReadout('mr-ro',mrS,x=>`<div class="ro-com"><span>Series A</span><b>${x-1-2>0&&(x-3)*0.25>1?'has converted to common':'is taking its $1M preference'}</b></div>`));
+  document.getElementById('mr-lg').innerHTML=mrS.map(s=>`<span><i style="background:${s[1]}"></i>${s[0]}</span>`).join('');
+  mv(8);
+
+  const ciS=[["Common & options","var(--c1)"],["Series A","var(--c2)"],["Series B","var(--c3)"],["Series C","var(--c4)"],["Series D (senior)","var(--c5)"]];
+  const ciFn=x=>{const p=ciEq(x*1e6).pay;return [p.Com,p.A,p.B,p.C,p.D].map(v=>v/1e6)};
+  const thr={};for(let x=0;x<=150;x+=0.25){const c=ciEq(x*1e6).conv;['D','A','B','C'].forEach(k=>{if(c[k]&&thr[k]==null)thr[k]=x})}
+  const cm=ciStart();function ciStart(){for(let x=0;x<=60;x+=0.05){if(ciEq(x*1e6).pay.Com>1)return x}return null}
+  const cv=stackChart('ci-ch',150,25,ciFn,ciS,stackReadout('ci-ro',ciS,x=>{const c=ciEq(x*1e6).conv;const l=['D','C','B','A'].filter(k=>c[k]);return `<div class="ro-com"><span>Converted to common</span><b>${l.length?l.map(k=>'Series '+k).join(', '):'None yet'}</b></div>`}));
+  document.getElementById('ci-lg').innerHTML=ciS.map(s=>`<span><i style="background:${s[1]}"></i>${s[0]}</span>`).join('');
+  document.getElementById('ci-notes').innerHTML=`
+   <div class="tile"><h4>Below $10M</h4><p>Everything goes to Series D, the senior 1× preference. Investors 1–3's earlier money and all common get $0.</p></div>
+   <div class="tile"><h4>Common's first dollar: ≈${$M(cm)}</h4><p>The full 1× stack ($10M D + $19.25M A/B/C) has to be paid before founders and employees see anything.</p></div>
+   <div class="tile"><h4>Conversion points</h4><p>${['C','D','A','B'].filter(k=>thr[k]!=null).sort((a,b)=>thr[a]-thr[b]).map(k=>`Series ${k} converts at ≈${$M(thr[k])}`).join(' · ')}. Below those exits, each series is better off keeping its capped participating preferred.</p></div>
+   <div class="tile"><h4>Dead zones</h4><p>Between hitting its 2× cap and converting, a series' payout goes flat. Every extra dollar in that range goes to the holders still participating, mostly common.</p></div>`;
+  cv(60);
+}
+
+/* ---------------- Rendering ---------------- */
+const tabsEl=document.getElementById('tabs'), mainEl=document.getElementById('main');
+const TABS=[["sum","Summary","Σ","var(--teal)"],["how","How it works","?","var(--navy-2)"],["pay","Payouts vs exit","$","var(--teal)"],["A","Series A","A","var(--sA)"],["B","Series B","B","var(--sB)"],["C","Series C","C","var(--sC)"],["D","Series D","D","var(--sD)"]];
+
+TABS.forEach(([id,label,ic,acc],i)=>{
+  const b=document.createElement('button');
+  b.className='tab';b.role='tab';b.id='t-'+id;b.setAttribute('aria-controls','p-'+id);
+  b.style.setProperty('--acc',acc);
+  b.innerHTML=`<span class="dot">${ic}</span>${label}`;
+  b.onclick=()=>show(id);
+  tabsEl.appendChild(b);
+});
+
+function learnFor(t){const x=t.replace(/<[^>]+>/g,'');
+  if(/Anti-dilution/i.test(x))return'anti'; if(/Protective/i.test(x))return'protect'; if(/refusal|ROFR/i.test(x))return'rofr';
+  if(/Registration/i.test(x))return'reg'; if(/Option pool/i.test(x))return'pool'; if(/^Conversion/i.test(x))return'conv'; if(/Price & size/i.test(x))return'own'; return'';}
+function seriesPanel(id){
+  const d=S[id];
+  const p=document.createElement('section');p.className='panel';p.id='p-'+id;p.style.setProperty('--acc',d.acc);
+  let h=`<div class="hero" style="border-bottom-color:${d.acc}">
+    <div><h2>${d.name} <span class="pill acc">${d.date}</span> ${badge(d.mood[0],d.mood[1])}</h2><p class="lede">${d.lede}</p></div>
+    <div class="stats">${d.stats.map(s=>`<div class="stat"><div class="l">${s[0]}</div><div class="v">${s[1]}</div><div class="s">${s[2]}</div></div>`).join('')}</div>
+  </div>
+  <div class="bigidea"><div class="ic">!</div><div><h4>The big idea</h4><p>${d.big}</p></div></div>
+  <div class="toolbar" role="group" aria-label="Filter themes">
+    <button class="chip" aria-pressed="true" data-f="all">All terms</button>
+    ${THEMES.map(t=>`<button class="chip" aria-pressed="false" data-f="${t[0]}">${t[1]}</button>`).join('')}
+    <span class="sp"></span>
+    <button class="btn-ghost" data-x="open">Expand all</button><button class="btn-ghost" data-x="close">Collapse all</button>
+  </div>`;
+  THEMES.forEach((t,ti)=>{
+    h+=`<div class="sec" data-sec="${t[0]}"><div class="sec-h"><div class="n">${ti+1}</div><div><h3>${t[1]}</h3><small>${t[2]}</small></div></div><div class="cards">`;
+    d.cards[t[0]].forEach(c=>{
+      h+=`<details class="card"><summary>
+        <div class="ct">${c.t} ${badge(c.b,c.txt)} <span class="fav">Favors: <b>${c.f}</b></span></div>
+        <div class="ck">${c.k}</div><div class="chev" aria-hidden="true">⌄</div></summary>
+        <div class="cb">
+          <div class="blk d"><h5>What the term sheet says</h5><ul>${c.s.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+          ${c.x?`<div class="blk x"><h5>⚑ Exceptions & carve-outs</h5><ul>${c.x.map(x=>`<li>${x}</li>`).join('')}</ul></div>`:''}
+          <div class="blk w"><h5>Why it matters</h5><p>${c.w}</p></div>
+          ${learnFor(c.t)?`<button class="learn" data-learn="${learnFor(c.t)}">How it works, step by step →</button>`:''}
+        </div></details>`;
+    });
+    h+=`</div></div>`;
+  });
+  p.innerHTML=h;
+  p.querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{
+    p.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===ch));
+    const f=ch.dataset.f;
+    p.querySelectorAll('.sec').forEach(s=>s.style.display=(f==='all'||s.dataset.sec===f)?'':'none');
+  });
+  p.querySelectorAll('[data-learn]').forEach(b=>b.onclick=()=>show('how','L-'+b.dataset.learn));
+  p.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>p.querySelectorAll('details').forEach(dd=>dd.open=b.dataset.x==='open'));
+  return p;
+}
+
+function summaryPanel(){
+  const p=document.createElement('section');p.className='panel';p.id='p-sum';p.style.setProperty('--acc','var(--teal)');
+  const rc=[["A","Sept 2003","$1.5M","$1.00 · post $3.1M","base","Insider seed","var(--sA)"],["B","Aug 2005","≈$7.2M","$1.00 · flat","chg","Flat round","var(--sB)"],["C","Dec 2006","$7.5M","$0.5825 · post $18M","tight","Down round","var(--sC)"],["D","Nov 2007","$10M","$0.7234 · post $34M","loose","Up round","var(--sD)"]];
+  let h=`<div class="hero" style="grid-template-columns:1fr;border-bottom-color:var(--teal)">
+    <div><h2>The story in one screen <span class="pill acc" style="--acc:var(--teal)">Summary</span></h2>
+    <p class="lede">Four rounds over four years: a friendly seed, a ${G('flat','flat')} insider round, a ${G('down','down round')} led by an outsider, then a recovery round on much tougher terms. Each new lead investor wrote more protection into the deal. Click a round to open its tab.</p></div></div>
+  <div class="grid4" style="margin-top:14px">${rc.map(r=>`<button class="rcard" style="--rc:${r[6]}" data-go="${r[0]}"><div class="top"><span class="tag">${r[0]}</span><span class="yr">${r[1]}</span></div><div class="amt">${r[2]}</div><div class="px">${r[3]}</div><div class="mood">${badge(r[4],r[5])}</div></button>`).join('')}</div>
+
+  <div class="sec"><div class="sec-h"><div class="n">1</div><div><h3>Price & value</h3><small>Is the company growing or shrinking in value?</small></div></div>
+   <div class="two">
+    <div class="box chart"><h3>Price per share</h3><p class="sub">Flat, then −42%, then +24%. Still below the A/B price.</p><div id="ch-price"></div></div>
+    <div class="box chart"><h3>Post-money valuation</h3><p class="sub">Rises mostly because new cash is added</p><div id="ch-post"></div><p class="note">*Post-B is implied: 15.2M fully diluted shares × $1.00 (the pre-Series C cap table, excluding the 2.8M pool added for C).</p></div>
+   </div>
+   <div class="box" style="margin-top:14px"><h3>Value vs. cost at the Series D price</h3><p class="sub">As-converted value at $0.7234/share, ignoring preferences. ${I}</p>
+    <table class="num"><thead><tr><th>Holder</th><th>Invested</th><th>Shares (FD)</th><th>Value @ D</th><th>Multiple</th></tr></thead><tbody>
+     <tr><td>Investor 1 (A+B+C+D)</td><td>$13.20M</td><td>16.04M</td><td>$11.61M</td><td><b>0.88×</b></td></tr>
+     <tr><td>Investor 2 (B+C+D)</td><td>$5.19M</td><td>6.30M</td><td>$4.56M</td><td><b>0.88×</b></td></tr>
+     <tr><td>Investor 3 (C+D)</td><td>$4.61M</td><td>7.58M</td><td>$5.48M</td><td><b>1.19×</b></td></tr>
+     <tr><td>Investor 4 (D)</td><td>$6.00M</td><td>8.29M</td><td>$6.00M</td><td><b>1.00×</b></td></tr>
+     <tr><td>Founders 1 + 2 (common)</td><td>sweat</td><td>1.5M (+0.6M opts)</td><td>≈$1.09M</td><td>behind $29M stack</td></tr>
+    </tbody></table>
+    <p class="note">Paid-in capital across all rounds is ≈ $29.25M, against a $34M post-money. The company is worth only about $5M more than the cash put in. Investors are protected by the 1×–2× preferences; founders and employees are not.</p>
+   </div>
+  </div>
+
+  <div class="sec"><div class="sec-h"><div class="n">2</div><div><h3>Who owns the company</h3><small>Fully diluted ownership after each round</small></div></div>
+   <div class="box chart"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><div><h3>Ownership after each close</h3><p class="sub" style="margin:0">Founders: 48% → 10% → 4.9% → 4.5%</p></div><button class="btn-ghost" id="own-tog">Show table</button></div>
+    <div id="ch-own"></div><div class="lg" id="own-lg"></div><div id="own-tbl" hidden></div>
+    <p class="note">Post-B excludes the 2.8M pool that was added just before C. "Founders" in D includes their new 300k options each. Employees & pool = CEO and staff options, small holders, warrants and the unissued pool.</p>
+   </div>
+   <div class="flow" style="margin-top:14px">
+    <div class="fstep" style="--rc:var(--sA)"><h4>A · 4% pool</h4><p>The founders are the team. A tiny pool keeps their stake at 48%.</p></div>
+    <div class="fstep" style="--rc:var(--sB)"><h4>B · ≈12% pool</h4><p>1.6M shares to hire a professional CEO and management.</p></div>
+    <div class="fstep" style="--rc:var(--sC)"><h4>C · +2.8M pre-money</h4><p>Refresh underwater options after the down round. Placed pre-money so Investor 3 isn't diluted.</p></div>
+    <div class="fstep" style="--rc:var(--sD)"><h4>D · 8.16% pre-money</h4><p>Sized for hiring through the next milestone. The ${G('shuffle','pool shuffle')} again lowers the effective price paid by existing holders.</p></div>
+   </div>
+  </div>
+
+  <div class="sec"><div class="sec-h"><div class="n">3</div><div><h3>Side-by-side terms</h3><small>Highlighted cells changed from the prior round</small></div></div>
+   <div class="toolbar" style="margin-top:0" role="group" aria-label="Filter rows" id="cmp-f">
+    <button class="chip" aria-pressed="true" data-f="all">All</button><button class="chip" aria-pressed="false" data-f="Economics">Economics</button><button class="chip" aria-pressed="false" data-f="Control">Control</button><button class="chip" aria-pressed="false" data-f="Liquidity & deal">Liquidity & deal</button>
+    <span class="sp"></span><label style="font-size:14px;font-weight:800;color:var(--ink-2);display:flex;gap:6px;align-items:center"><input type="checkbox" id="cmp-only"> Only rows that change</label>
+   </div>
+   <div class="tbl-wrap"><table class="cmp" id="cmp"></table></div>
+  </div>
+
+  <div class="sec"><div class="sec-h"><div class="n">4</div><div><h3>What changed, and why</h3><small>The case's three "Differences" questions</small></div></div>
+   <div class="diff">
+    <div class="diffc"><h4>${badge('chg','A → B')} Why A and B look almost identical</h4><ul>
+      <li>Same <b>company-counsel template</b> (Law Firm 1), same <b>$1.00 price</b>, same lead (<b>Investor 1</b>).</li>
+      <li>Real changes: B is <b>pari passu</b> with A; votes go from a majority to <b>66⅔%</b>; a <b>1.6M pool</b> is added; the anti-dilution "ratchet back up" is dropped; charter vetoes cover only <i>adverse</i> amendments; investor counsel is capped at $25k; the board grows to 5 and founders keep one seat.</li></ul>
+      <div class="why"><b>Why:</b> an insider-led flat round. Investor 1 already owned the A terms and was effectively negotiating with itself. Investor 2 accepted the existing framework rather than re-opening it.</div></div>
+    <div class="diffc"><h4>${badge('tight','A & B → C')} Why C looks different</h4><ul>
+      <li>A short <b>investor-drafted memo</b> with a 4-day signing deadline and a <b>binding no-shop</b>.</li>
+      <li>A <b>down round</b> with a 2.8M pool added pre-money; anti-dilution in A/B is triggered on paper but <b>apparently waived</b>.</li>
+      <li>Protective votes at <b>70% / 90%</b>; auto-conversion needs a <b>4× IPO price</b>; demands can be triggered by just <b>25%</b>; SBA documentation, D&O insurance and predecessor-company indemnities.</li></ul>
+      <div class="why"><b>Why:</b> a new outside lead with leverage (the company needed cash) and regulatory requirements (likely an ${G('sbic','SBIC')}). Its terms protect a minority holder from the two insiders.</div></div>
+    <div class="diffc"><h4>${badge('tight','A, B & C → D')} Why D is the toughest</h4><ul>
+      <li><b>Seniority</b> for the first time; deemed liquidation includes exclusive IP licenses; 3× / $30M Qualified IPO.</li>
+      <li><b>Drag-along</b>, <b>operating vetoes</b> (debt, budget, contracts >$250k), an investor-majority <b>board</b>, an observer and committee seats.</li>
+      <li>Institutional mechanics: audited financials within 120 days, key-man and E&O insurance, Bank Holding Company Act compliance, a long binding no-shop.</li></ul>
+      <div class="why"><b>Why:</b> a large institutional (bank-affiliated) lead putting in $6M at a higher price wants senior protection for that money and governance over how it's spent. NVCA-style drafting reflects its counsel and process.</div></div>
+   </div>
+  </div>
+
+  <div class="sec"><div class="sec-h"><div class="n">5</div><div><h3>Bottom line</h3><small>Control, winners & losers, health ${I}</small></div></div>
+   <div class="flow">
+    <div class="fstep" style="--rc:var(--sA)"><h4>Who controls after A?</h4><p>Board split 2–2. <b>Investor 1</b> holds every protective veto as the sole preferred holder. Balanced day to day, investor-controlled on big decisions.</p></div>
+    <div class="fstep" style="--rc:var(--sB)"><h4>After B?</h4><p><b>Investor 1</b> (~54% FD, ~70% of preferred) clears the 66⅔% bar alone. Founders hold 1 board seat.</p></div>
+    <div class="fstep" style="--rc:var(--sC)"><h4>After C?</h4><p><b>Investors 1 + 2</b> (~74% of preferred) pass the 70% votes. Investor 3 has a 90% veto on C-specific changes. The board is 3–2–1.</p></div>
+    <div class="fstep" style="--rc:var(--sD)"><h4>After D?</h4><p><b>Investors</b> hold 4 of 7 seats. Investor 1 (~42% of preferred) can block alone; Investor 4 controls the D class vote and every committee.</p></div>
+   </div>
+   <div class="two" style="margin-top:14px">
+    <div class="box"><h3>Advantaged going forward</h3><p class="sub">Who holds the best position after D</p>
+      <div class="kv"><span>Investor 4</span><b>Senior 1×, D veto, committees</b></div>
+      <div class="kv"><span>Investor 3</span><b>Bought at $0.58, 1.19× on paper</b></div>
+      <div class="kv"><span>New hires</span><b>Low-strike options, fresh pool</b></div>
+      <div class="kv"><span>Investor 1</span><b>Largest holder, blocking stake (but 0.88×)</b></div></div>
+    <div class="box"><h3>Disadvantaged going forward</h3><p class="sub">Who bears the risk</p>
+      <div class="kv"><span>Founders 1 & 2</span><b>48% → ~4.5%, behind $29M stack</b></div>
+      <div class="kv"><span>A/B holders</span><b>Paid $1.00, now junior to D</b></div>
+      <div class="kv"><span>Early employees</span><b>Common, dragged, $1-era options</b></div>
+      <div class="kv"><span>Investor 2</span><b>0.88×, no veto of its own</b></div></div>
+   </div>
+   <div class="box" style="margin-top:14px"><h3>Successful, routine or troubled?</h3>
+     <div class="kv"><span>Series A</span><b>Routine: a friendly seed</b></div>
+     <div class="kv"><span>Series B</span><b>Mildly troubled: flat after 2 years, insiders carry it</b></div>
+     <div class="kv"><span>Series C</span><b>Troubled for founders and A/B; a good entry price for Investor 3</b></div>
+     <div class="kv"><span>Series D</span><b>A recovery round, successful for the company (cash and a step-up), costly in control</b></div>
+     <p class="note" style="font-size:14px;color:var(--ink-2)">Overall: the company is <b>making progress, not breaking out</b>. Value is only modestly above the capital invested, and each round shifts more economics and control to the latest money.</p></div>
+  </div>`;
+  p.innerHTML=h;
+  p.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go));
+  return p;
+}
+
+function renderCmp(){
+  const t=document.getElementById('cmp');
+  const f=document.querySelector('#cmp-f .chip[aria-pressed="true"]').dataset.f;
+  const only=document.getElementById('cmp-only').checked;
+  const cols=[["A","var(--sA)"],["B","var(--sB)"],["C","var(--sC)"],["D","var(--sD)"]];
+  let h=`<thead><tr><th>Term</th>${cols.map(c=>`<th><span class="sq" style="background:${c[1]}">${c[0]}</span>Series ${c[0]}</th>`).join('')}</tr></thead><tbody>`;
+  let grp='';
+  CMP.forEach(r=>{
+    if(r.length===1){grp=r[0]; if(f==='all'||f===grp) h+=`<tr class="grp"><td colspan="5">${grp}</td></tr>`; return;}
+    if(f!=='all'&&f!==grp) return;
+    const changes=r.slice(2).some(c=>c[1]!=='same');
+    if(only&&!changes) return;
+    h+=`<tr><th scope="row">${r[0]}</th>${r.slice(1).map((c,i)=>`<td class="${i>0&&c[1]!=='same'?'hl':''}">${i>0?badge(c[1])+'<br>':''}${c[0]}</td>`).join('')}</tr>`;
+  });
+  t.innerHTML=h+'</tbody>';
+}
+
+/* ---------------- Charts ---------------- */
+const ctip=document.getElementById('ctip');
+function tipOn(e,html){ctip.innerHTML=html;ctip.classList.add('on');moveTip(e)}
+function moveTip(e){const x=Math.min(e.clientX+14,innerWidth-ctip.offsetWidth-8);ctip.style.left=x+'px';ctip.style.top=(e.clientY+14)+'px'}
+function tipOff(){ctip.classList.remove('on')}
+function bindTips(root){root.querySelectorAll('[data-tip]').forEach(el=>{el.addEventListener('mouseenter',e=>tipOn(e,el.dataset.tip));el.addEventListener('mousemove',moveTip);el.addEventListener('mouseleave',tipOff)})}
+
+function barChart(el,data,max,fmt,ticks){
+  const W=460,H=230,L=46,B=30,T=24,R=10,iw=W-L-R,ih=H-T-B,bw=iw/data.length;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="bar chart">`;
+  ticks.forEach(v=>{const y=T+ih-(v/max)*ih;s+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-width="1"/><text x="${L-8}" y="${y+4}" text-anchor="end" font-size="11" fill="var(--ink-3)" font-weight="700">${fmt(v)}</text>`});
+  data.forEach((d,i)=>{
+    const h=(d[1]/max)*ih, x=L+i*bw+bw*.22, w=bw*.56, y=T+ih-h, r=Math.min(6,h/2);
+    s+=`<path d="M${x},${T+ih} V${y+r} Q${x},${y} ${x+r},${y} H${x+w-r} Q${x+w},${y} ${x+w},${y+r} V${T+ih} Z" fill="${d[2]||'var(--teal)'}"/>`;
+    s+=`<text x="${x+w/2}" y="${y-7}" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--ink)">${d[3]||fmt(d[1])}</text>`;
+    s+=`<text x="${x+w/2}" y="${H-10}" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--ink-2)">Series ${d[0]}</text>`;
+    s+=`<rect x="${L+i*bw}" y="${T}" width="${bw}" height="${ih}" fill="transparent" data-tip="<div class='k'>Series ${d[0]}</div>${d[3]||fmt(d[1])}"/>`;
+  });
+  s+=`<line x1="${L}" x2="${W-R}" y1="${T+ih}" y2="${T+ih}" stroke="var(--ink-3)" stroke-width="1"/></svg>`;
+  el.innerHTML=s;bindTips(el);
+}
+
+function ownChart(){
+  const el=document.getElementById('ch-own');
+  const W=760,rowH=44,L=64,R=10,T=6,iw=W-L-R,H=T+OWN.rows.length*rowH+18;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Ownership stacked bars">`;
+  [0,25,50,75,100].forEach(v=>{const x=L+iw*v/100;s+=`<line x1="${x}" x2="${x}" y1="${T}" y2="${H-18}" stroke="var(--line)"/><text x="${x}" y="${H-4}" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-weight="700">${v}%</text>`});
+  OWN.rows.forEach((r,ri)=>{
+    const y=T+ri*rowH+8,bh=rowH-16;let x=L;
+    s+=`<text x="${L-10}" y="${y+bh/2+4}" text-anchor="end" font-size="12.5" font-weight="900" fill="var(--ink-2)">${r[0]}</text>`;
+    const vis=r[1].map((v,i)=>[v,i]).filter(a=>a[0]>0);
+    vis.forEach(([v,i],k)=>{
+      const w=iw*v/100, gap=k<vis.length-1?2:0;
+      s+=`<rect x="${x}" y="${y}" width="${Math.max(0,w-gap)}" height="${bh}" rx="${k===0||k===vis.length-1?4:0}" fill="${OWN.series[i][1]}" data-tip="<div class='k'>${r[0]} · ${OWN.series[i][0]}</div>${v.toFixed(1)}%"/>`;
+      if(w>40) s+=`<text x="${x+w/2}" y="${y+bh/2+4}" text-anchor="middle" font-size="11.5" font-weight="900" fill="${i===1?'#14213d':'#fff'}" pointer-events="none">${Math.round(v)}%</text>`;
+      x+=w;
+    });
+  });
+  el.innerHTML=s+'</svg>';bindTips(el);
+  document.getElementById('own-lg').innerHTML=OWN.series.map(s=>`<span><i style="background:${s[1]}"></i>${s[0]}</span>`).join('');
+  document.getElementById('own-tbl').innerHTML=`<table class="num" style="margin-top:10px"><thead><tr><th>Holder</th>${OWN.rows.map(r=>`<th>${r[0]}</th>`).join('')}</tr></thead><tbody>${OWN.series.map((s,i)=>`<tr><td>${s[0]}</td>${OWN.rows.map(r=>`<td>${r[1][i]?r[1][i].toFixed(1)+'%':'—'}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  document.getElementById('own-tog').onclick=e=>{const t=document.getElementById('own-tbl');t.hidden=!t.hidden;e.target.textContent=t.hidden?'Show table':'Hide table'};
+}
+
+/* ---------------- Glossary tooltip ---------------- */
+const tip=document.getElementById('tip');let pinned=null;
+function showG(el){const g=GL[el.dataset.g];tip.innerHTML=`<b>${g[0]}</b>${g[1]}`;tip.classList.add('on');const r=el.getBoundingClientRect();
+  let x=Math.min(Math.max(8,r.left),innerWidth-tip.offsetWidth-8),y=r.bottom+8;if(y+tip.offsetHeight>innerHeight-8)y=r.top-tip.offsetHeight-8;tip.style.left=x+'px';tip.style.top=y+'px'}
+function hideG(){tip.classList.remove('on');pinned=null}
+document.addEventListener('mouseover',e=>{const g=e.target.closest('.g');if(g)showG(g)});
+document.addEventListener('mouseout',e=>{const g=e.target.closest('.g');if(g&&!pinned)hideG()});
+document.addEventListener('focusin',e=>{const g=e.target.closest('.g');if(g)showG(g)});
+document.addEventListener('focusout',e=>{if(e.target.closest('.g'))hideG()});
+document.addEventListener('click',e=>{const g=e.target.closest('.g');if(g){e.preventDefault();e.stopPropagation();if(pinned===g){hideG()}else{pinned=g;showG(g)}}else if(pinned)hideG()},true);
+addEventListener('scroll',()=>{if(tip.classList.contains('on'))hideG()},{passive:true});
+
+/* ---------------- Boot ---------------- */
+mainEl.appendChild(summaryPanel());
+mainEl.appendChild(howPanel());
+mainEl.appendChild(payPanel());
+['A','B','C','D'].forEach(id=>mainEl.appendChild(seriesPanel(id)));
+renderCmp();
+document.querySelectorAll('#cmp-f .chip').forEach(ch=>ch.onclick=()=>{document.querySelectorAll('#cmp-f .chip').forEach(c=>c.setAttribute('aria-pressed',c===ch));renderCmp()});
+document.getElementById('cmp-only').onchange=renderCmp;
+barChart(document.getElementById('ch-price'),PRICE,1.2,v=>'$'+v.toFixed(v%1?2:2),[0,0.4,0.8,1.2]);
+barChart(document.getElementById('ch-post'),POST.map((d,i)=>[d[0],d[1],PRICE[i][2],d[2]]),40,v=>'$'+v+'M',[0,10,20,30,40]);
+ownChart();
+bootPay();
+document.querySelectorAll('#own-seg button').forEach(b=>b.onclick=()=>renderOwn(b.dataset.r));renderOwn('A');
+document.querySelectorAll('#calc [data-p]').forEach(b=>b.onclick=()=>{const [pp,m]=b.dataset.p.split(',');setCalc(pp,m)});
+['i-price','i-money'].forEach(i=>document.getElementById(i).oninput=renderCalc);setCalc(0.5825,7.5);
+
+function show(id,anchor){
+  TABS.forEach(([t])=>{document.getElementById('t-'+t).setAttribute('aria-selected',t===id);document.getElementById('p-'+t).classList.toggle('on',t===id)});
+  try{localStorage.setItem('ts-tab',id)}catch(e){}
+  if(location.hash!=='#'+id)history.replaceState(null,'','#'+id);
+  if(anchor){const a=document.getElementById(anchor);if(a){a.scrollIntoView({behavior:'smooth'});return}}
+  scrollTo({top:0,behavior:'smooth'});
+}
+let start='sum';try{start=(location.hash.slice(1))||localStorage.getItem('ts-tab')||'sum'}catch(e){}
+show(TABS.some(t=>t[0]===start)?start:'sum');
+</script>
+</body>
+</html>
