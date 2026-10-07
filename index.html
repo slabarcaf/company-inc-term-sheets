@@ -328,6 +328,11 @@ ol.steps li::before{content:counter(st);position:absolute;left:12px;top:9px;widt
 .pc-n small{color:var(--ink-3);font-weight:700;font-size:12.5px}
 .pc-d{font-size:14px;color:var(--ink-2)}
 @media (max-width:860px){.pgrid.n2,.pgrid.n3{grid-template-columns:1fr}}
+
+.exittype{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px}
+.exittype>span{font-weight:900;font-size:14px}
+.exittype .seg{margin:0}
+.ipo-n{background:var(--b-new-bg);border-radius:10px;padding:8px 10px;font-size:14px}
 </style>
 </head>
 <body>
@@ -1021,10 +1026,33 @@ const PV={
    bends:p=>[{x:p.M*p.I,y:p.M*p.I,t:`Full ${p.M}× preference paid`,w:`Up to ${$M(p.M*p.I)} the investor takes every dollar. Common gets $0.`},
      {x:p.M*p.I/p.f,y:p.M*p.I,t:"Converts to common",w:`Above ${$M(p.M*p.I/p.f)}, ${(p.f*100).toFixed(1)}% of the exit beats ${$M(p.M*p.I)}, so it converts.`}]},
 };
-const PKEYS=Object.keys(PV);
-const PDEF={I:10,P:10,M:2,K:2,C:20};
+
+/* additions from the private-equity securities note */
+PV.debt.name="Debt or straight preferred";
+PV.debt.tag="Fixed claim: face value back, no upside";
+PV.debt.how=p=>`Gets its ${$M(p.I)} back before the founders, and never a dollar more. Straight (redeemable, non-convertible) preferred stock pays the same way: its face value plus any dividends.`;
+PV.redeem={name:"Redeemable preferred + common",tag:"Face value back AND a common stake",
+  how:p=>`Two pieces in one unit: straight preferred with a ${$M(p.I)} face value that must be redeemed, plus ${(p.f*100).toFixed(1)}% of the common stock. The investor gets the face value first, then ${(p.f*100).toFixed(1)}% of everything above it.`,
+  ipoNote:p=>`At an IPO the preferred is redeemed out of the offering proceeds, so the investor still gets its ${$M(p.I)} back and keeps its stake. This is the "double dip" founders dislike.`,
+  fav:"The common 1970s structure. Very investor-friendly: the investor gets its money back and keeps its stake, even in an IPO.",
+  pay:(x,p)=>x<=p.I?x:p.I+p.f*(x-p.I),
+  bends:p=>[{x:p.I,y:p.I,t:"Face value redeemed",w:`After the ${$M(p.I)} face value is paid, it takes ${(p.f*100).toFixed(1)}% of every extra dollar. In a sale this is the same curve as participating preferred.`}]};
+PV.vest={name:"Common + founder vesting",tag:"Plain common, but the founder must earn the shares",
+  how:p=>{const e=p.f/(p.f+(1-p.f)*p.V/100);return `Plain common stock, but the founder's shares vest over time. If the company is sold when only ${p.V}% of the founder's shares have vested (including any acceleration), the company buys the unvested shares back at a nominal price. The investor's ${(p.f*100).toFixed(1)}% then becomes ${(e*100).toFixed(1)}% of the proceeds.`},
+  ipoNote:p=>`An IPO doesn't trigger a buyback, so in an IPO this is plain common.`,
+  fav:"Protects the investor if the founder sells or leaves before earning the equity, and keeps the team in place (\"golden handcuffs\"). It only covers situations the contract anticipated.",
+  pay:(x,p)=>x*p.f/(p.f+(1-p.f)*p.V/100),
+  bends:p=>[]};
+PV.conv.ipoNote=PV.part.ipoNote=PV.partcap.ipoNote=PV.convM.ipoNote=p=>`At an IPO the preferred must convert (mandatory conversion), so the preference disappears and it pays like plain common: ${(p.f*100).toFixed(1)}% of the exit.`;
+PV.safe.ipoNote=p=>`At an IPO the SAFE converts at the cap: ${(p.s*100).toFixed(1)}% of the exit.`;
+['conv','part','partcap','convM','vest'].forEach(k=>PV[k].ipo=(x,p)=>p.f*x);
+PV.safe.ipo=(x,p)=>p.s*x;
+const payOf=(k,x,p)=>p.ipo&&PV[k].ipo?PV[k].ipo(x,p):PV[k].pay(x,p);
+const bendsOf=(k,p)=>p.ipo&&PV[k].ipo?[]:PV[k].bends(p);
+const PKEYS=['debt','common','redeem','conv','part','partcap','convM','safe','vest'];
+const PDEF={I:10,P:10,M:2,K:2,C:20,V:25,ipo:false};
 let PS={...PDEF,a:'conv',b:'',hx:null};
-function pParams(){const f=PS.I/(PS.P+PS.I);return {I:PS.I,P:PS.P,M:PS.M,K:PS.K,C:PS.C,f,s:PS.I/(PS.C+PS.I)}}
+function pParams(){const f=PS.I/(PS.P+PS.I);return {I:PS.I,P:PS.P,M:PS.M,K:PS.K,C:PS.C,V:PS.V,ipo:PS.ipo,f,s:PS.I/(PS.C+PS.I)}}
 function niceMax(v){const steps=[10,20,25,40,50,60,80,100,120,150,200,250,300,400,500];return steps.find(s=>s>=v)||Math.ceil(v/100)*100}
 
 function payPanel(){
@@ -1042,14 +1070,15 @@ function payPanel(){
     <div class="vbtog"><button class="btn-ghost" id="vb-tog">+ Compare with a second vehicle</button></div>
     <div class="knobs"><div class="knobs-h">Deal terms <span id="own-line" class="fav"></span><button class="btn-ghost" id="p-reset">Reset to the slides' setup</button></div>
      <div class="sliders s5">
-      ${sl('I','Investment',1,30,0.5,'M')}${sl('P','Pre-money',2,60,1,'M')}${sl('M','Liquidation multiple',1,3,0.5,'x')}${sl('K','Participation cap',1.5,4,0.5,'x')}${sl('C','SAFE cap',5,80,1,'M')}
+      ${sl('I','Investment',1,30,0.5,'M')}${sl('P','Pre-money',1,60,1,'M')}${sl('M','Liquidation multiple',1,3,0.5,'x')}${sl('K','Participation cap',1.5,4,0.5,'x')}${sl('C','SAFE cap',5,80,1,'M')}${sl('V','Founder shares vested at the sale',0,100,5,'%')}
      </div>
     </div>
+    <div class="exittype"><span>How the company exits</span><div class="seg" id="ex-seg" role="tablist" aria-label="Exit type"><button role="tab" data-e="sale" style="--rc:var(--navy-2)">Sale or merger</button><button role="tab" data-e="ipo" style="--rc:var(--navy-2)">IPO</button></div></div>
     <div class="chart" id="pay-ch" style="margin-top:12px"></div>
     <div class="lg" id="pay-lg"></div>
     <div class="exitbar"><label for="ps-X">Exit value <output id="po-X"></output></label><input type="range" id="ps-X" min="0" max="50" step="0.5"></div>
     <div id="pay-ro"></div>
-    <p class="note">Drag the exit slider, or hover over the chart, to read any exit value. The dashed diagonal is the total payout line (payout = exit): no investor can get more than the whole company. In this simple two-party example, whatever the investor doesn't get goes to the founders. The SAFE assumes a pre-money cap, so stake = investment ÷ (cap + investment).</p>
+    <p class="note">Drag the exit slider, or hover over the chart, to read any exit value. The dashed diagonal is the total payout line (payout = exit): no investor can get more than the whole company. In this simple two-party example, whatever the investor doesn't get goes to the founders. The IPO view assumes the offering is large enough to trigger mandatory conversion of the preferred. The SAFE assumes a pre-money cap, so stake = investment ÷ (cap + investment).</p>
    </div>
    <div class="two" id="pay-cards" style="margin-top:14px"></div>
   </div>`;
@@ -1060,7 +1089,7 @@ let PX={xmax:50,X:null,Y:null};
 function paySel(){return [[PS.a,'var(--c1)','A',`Vehicle A`],...(PS.b?[[PS.b,'var(--c4)','B','Vehicle B']]:[]),['common','var(--c3)','C','Baseline']]}
 function drawPay(){
   const p=pParams();
-  const all=PKEYS.flatMap(k=>PV[k].bends(p).map(b=>b.x));
+  const all=PKEYS.flatMap(k=>PV[k].bends({...p,ipo:false}).map(b=>b.x));
   const xmax=niceMax(Math.max(...all,(p.P+p.I)*2)*1.2);
   const W=720,H=420,L=56,R=16,T=16,B=40,iw=W-L-R,ih=H-T-B;
   const X=v=>L+v/xmax*iw, Y=v=>T+ih-v/xmax*ih;PX={xmax,X,Y};
@@ -1072,10 +1101,10 @@ function drawPay(){
   s+=`<text transform="translate(13 ${T+ih/2}) rotate(-90)" text-anchor="middle" font-size="12" font-weight="900" fill="var(--ink-2)">Investor payout</text>`;
   s+=`<line x1="${X(0)}" y1="${Y(0)}" x2="${X(xmax)}" y2="${Y(xmax)}" stroke="var(--ink-3)" stroke-width="1.5" stroke-dasharray="5 5"/><text x="${X(xmax*0.8)-6}" y="${Y(xmax*0.8)-8}" text-anchor="end" font-size="11.5" font-weight="800" fill="var(--ink-3)">Total payout line</text>`;
   sel.slice().reverse().forEach(([k,c,l])=>{
-    let d='';for(let j=0;j<=480;j++){const x=xmax*j/480;d+=(j?'L':'M')+X(x).toFixed(1)+','+Y(PV[k].pay(x,p)).toFixed(1)}
+    let d='';for(let j=0;j<=480;j++){const x=xmax*j/480;d+=(j?'L':'M')+X(x).toFixed(1)+','+Y(payOf(k,x,p)).toFixed(1)}
     s+=`<path d="${d}" fill="none" stroke="${c}" stroke-width="${l==='C'?2:3}" ${l==='B'?'stroke-dasharray="9 5"':l==='C'?'stroke-dasharray="2 5" stroke-linecap="round"':''} stroke-linejoin="round" clip-path="url(#pclip)"/>`;
   });
-  sel.filter(x=>x[2]!=='C').forEach(([k,c,l])=>PV[k].bends(p).forEach((b,j)=>{if(b.x<=xmax)s+=`<g data-tip="<div class='k'>${PV[k].name}</div><b>${b.t}</b><br>${b.w}"><circle cx="${X(b.x)}" cy="${Y(b.y)}" r="11" fill="transparent"/><circle cx="${X(b.x)}" cy="${Y(b.y)}" r="6" fill="${c}" stroke="var(--surface)" stroke-width="2"/><text x="${X(b.x)}" y="${l==='B'?Y(b.y)+22:Y(b.y)-12}" text-anchor="middle" font-size="11" font-weight="900" fill="var(--ink)">${l}${j+1}</text></g>`}));
+  sel.filter(x=>x[2]!=='C').forEach(([k,c,l])=>bendsOf(k,p).forEach((b,j)=>{if(b.x<=xmax)s+=`<g data-tip="<div class='k'>${PV[k].name}</div><b>${b.t}</b><br>${b.w}"><circle cx="${X(b.x)}" cy="${Y(b.y)}" r="11" fill="transparent"/><circle cx="${X(b.x)}" cy="${Y(b.y)}" r="6" fill="${c}" stroke="var(--surface)" stroke-width="2"/><text x="${X(b.x)}" y="${l==='B'?Y(b.y)+22:Y(b.y)-12}" text-anchor="middle" font-size="11" font-weight="900" fill="var(--ink)">${l}${j+1}</text></g>`}));
   s+=`<g id="pay-x" pointer-events="none"><line y1="${T}" y2="${T+ih}" stroke="var(--ink)" stroke-width="1"/>${sel.map(([k,c])=>`<circle r="5" fill="${c}" stroke="var(--surface)" stroke-width="2" data-k="${k}"/>`).join('')}</g>`;
   s+=`<rect x="${L}" y="${T}" width="${iw}" height="${ih}" fill="transparent" id="pay-hit" style="cursor:crosshair"/></svg>`;
   const el=document.getElementById('pay-ch');el.innerHTML=s;bindTips(el);
@@ -1088,21 +1117,21 @@ function drawPay(){
   movePay(PS.hx);
   document.getElementById('pay-lg').innerHTML=sel.map(([k,c,l])=>`<span><i style="background:${c}"></i>${l==='C'?'Baseline · Common stock (dotted)':l+' · '+PV[k].name}</span>`).join('')+`<span><i style="background:var(--ink-3)"></i>Total payout line</span>`;
   document.getElementById('own-line').textContent=`· investor owns ${(p.f*100).toFixed(1)}%${[PS.a,PS.b].includes('safe')?` · SAFE stake ${(p.s*100).toFixed(1)}%`:''}`;
-  document.getElementById('pay-cards').innerHTML=sel.filter(x=>x[2]!=='C').map(([k,c,l])=>{const v=PV[k];const bs=v.bends(p);
-    return `<div class="box vcard" style="border-top:6px solid ${c}"><h3>${l} · ${v.name}</h3><p class="sub">${v.tag}</p><p>${v.how(p)}</p>
+  document.getElementById('pay-cards').innerHTML=sel.filter(x=>x[2]!=='C').map(([k,c,l])=>{const v=PV[k];const bs=bendsOf(k,p);
+    return `<div class="box vcard" style="border-top:6px solid ${c}"><h3>${l} · ${v.name}</h3><p class="sub">${v.tag}</p><p>${v.how(p)}</p>${p.ipo&&v.ipoNote?`<p class="ipo-n"><b>IPO:</b> ${v.ipoNote(p)}</p>`:''}
      ${bs.length?`<ul class="bends">${bs.map((b,j)=>`<li><span class="bn" style="background:${c}">${l}${j+1}</span><b>${b.t} at ${$M(b.x)}.</b> ${b.w}</li>`).join('')}</ul>`:''}
      <div class="why"><b>Who it suits:</b> ${v.fav}</div></div>`}).join('');
 }
 function movePay(x){
   const p=pParams(),{xmax,X,Y}=PX;x=Math.max(0,Math.min(xmax,x));PS.hx=x;
   const g=document.getElementById('pay-x');g.querySelector('line').setAttribute('x1',X(x));g.querySelector('line').setAttribute('x2',X(x));
-  g.querySelectorAll('circle').forEach(c=>{c.setAttribute('cx',X(x));c.setAttribute('cy',Y(PV[c.dataset.k].pay(x,p)))});
+  g.querySelectorAll('circle').forEach(c=>{c.setAttribute('cx',X(x));c.setAttribute('cy',Y(payOf(c.dataset.k,x,p)))});
   document.getElementById('ps-X').value=x;document.getElementById('po-X').textContent=$M(x);
   readPay(x,p);
 }
 function readPay(x,p){
-  const sel=paySel();const base=PV.common.pay(x,p);
-  const card=([k,c,l,lab])=>{const inv=PV[k].pay(x,p),fd=x-inv,d=inv-base;
+  const sel=paySel();const base=payOf('common',x,p);
+  const card=([k,c,l,lab])=>{const inv=payOf(k,x,p),fd=x-inv,d=inv-base;
     return `<div class="pcard" style="--pc:${c}"><div class="pc-h"><span class="pc-tag">${l==='C'?'Baseline':lab}</span><b>${PV[k].name}</b></div>
      <div class="pc-nums">
       <div class="pc-n"><span>Investor gets</span><b>${$M(inv)}</b><small>${x>0?(inv/x*100).toFixed(1):'0'}% of exit · ${(inv/p.I).toFixed(2)}× its money</small></div>
@@ -1110,25 +1139,28 @@ function readPay(x,p){
      </div>
      ${l==='C'?`<div class="pc-d">Plain ownership: each side gets its percentage.</div>`:`<div class="pc-d">${Math.abs(d)<0.005?'Same split as common stock at this exit.':`vs. common stock: <b>${$M(Math.abs(d))}</b> ${d>0?'more to the investor, less to the founders':'less to the investor, more to the founders'}.`}</div>`}
     </div>`};
-  document.getElementById('pay-ro').innerHTML=`<div class="pay-x-h">At an exit of <b>${$M(x)}</b></div><div class="pgrid n${sel.length}">${sel.map(card).join('')}</div>`;
+  document.getElementById('pay-ro').innerHTML=`<div class="pay-x-h">At ${p.ipo?'an IPO valuing the company at':'a sale for'} <b>${$M(x)}</b></div><div class="pgrid n${sel.length}">${sel.map(card).join('')}</div>`;
 }
 function syncKnobs(){
   const use=[PS.a,PS.b];
   document.getElementById('pl-M').hidden=!use.includes('convM');
   document.getElementById('pl-K').hidden=!use.includes('partcap');
   document.getElementById('pl-C').hidden=!use.includes('safe');
+  document.getElementById('pl-V').hidden=!use.includes('vest');
+  document.querySelectorAll('#ex-seg button').forEach(b=>b.setAttribute('aria-selected',(b.dataset.e==='ipo')===PS.ipo));
 }
 function bootPay(){
   document.querySelectorAll('#p-pay .sliders input[type=range]').forEach(i=>{i.value=PS[i.dataset.k];
-    const upd=()=>{document.getElementById('po-'+i.dataset.k).textContent=i.dataset.u==='x'?(+i.value)+'×':'$'+(+i.value)+'M'};upd();
+    const upd=()=>{document.getElementById('po-'+i.dataset.k).textContent=i.dataset.u==='x'?(+i.value)+'×':i.dataset.u==='%'?(+i.value)+'%':'$'+(+i.value)+'M'};upd();
     i.oninput=()=>{PS[i.dataset.k]=+i.value;upd();drawPay()}});
   document.getElementById('ps-X').oninput=e=>movePay(+e.target.value);
+  document.querySelectorAll('#ex-seg button').forEach(b=>b.onclick=()=>{PS.ipo=b.dataset.e==='ipo';syncKnobs();drawPay()});
   const mark=()=>{['va','vb'].forEach(g=>document.querySelectorAll('#'+g+' .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.v===(g==='va'?PS.a:PS.b))));syncKnobs()};
   document.querySelectorAll('#va .chip').forEach(c=>c.onclick=()=>{PS.a=c.dataset.v;mark();drawPay()});
   document.querySelectorAll('#vb .chip').forEach(c=>c.onclick=()=>{PS.b=c.dataset.v;mark();drawPay()});
   const tog=document.getElementById('vb-tog'),row=document.getElementById('vb-row');
   tog.onclick=()=>{if(PS.b){PS.b='';row.hidden=true;tog.textContent='+ Compare with a second vehicle'}else{PS.b=PS.a==='partcap'?'part':'partcap';row.hidden=false;tog.textContent='− Remove vehicle B'}mark();drawPay()};
-  document.getElementById('p-reset').onclick=()=>{Object.assign(PS,PDEF,{hx:null});document.querySelectorAll('#p-pay .sliders input[type=range]').forEach(i=>{i.value=PS[i.dataset.k];i.oninput()})};
+  document.getElementById('p-reset').onclick=()=>{Object.assign(PS,PDEF,{hx:null});syncKnobs();document.querySelectorAll('#p-pay .sliders input[type=range]').forEach(i=>{i.value=PS[i.dataset.k];i.oninput()})};
   mark();drawPay();
 }
 
